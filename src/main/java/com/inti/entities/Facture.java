@@ -33,12 +33,6 @@ public class Facture {
 		this.reservation = reservation;
 	}
 	
-	public Facture(double prixTot, Date dateCreation, Reservation reservation) {
-		super();
-		this.prixTot = prixTot;
-		DateCreation = dateCreation;
-		this.reservation = reservation;
-	}
 	public Reservation getReservation() {
 		return reservation;
 	}

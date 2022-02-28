@@ -22,7 +22,7 @@ public class Chauffeur extends Utilisateur implements Serializable{
 	private Vehicule vehicule;
 	
 	@OneToMany(mappedBy = "chauffeur")
-	private Set<Reservations> reservations = new HashSet<>();
+	private Set<Reservation> reservations = new HashSet<>();
 
 	public Chauffeur() {
 	}
@@ -60,11 +60,11 @@ public class Chauffeur extends Utilisateur implements Serializable{
 		this.vehicule = vehicule;
 	}
 
-	public Set<Reservations> getReservations() {
+	public Set<Reservation> getReservations() {
 		return reservations;
 	}
 
-	public void setReservations(Set<Reservations> reservations) {
+	public void setReservations(Set<Reservation> reservations) {
 		this.reservations = reservations;
 	}
 	

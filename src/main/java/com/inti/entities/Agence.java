@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 public class Agence {
 	private Long idAgence; 
 	private String nomAgence; 
-	private Adresse adresse;
+	private String adresse;
 	
 	@OneToOne(mappedBy="agence")
 	private ResponsableAgence responsableAgence; 
@@ -28,7 +28,7 @@ public class Agence {
 	public Agence() {
 	}
 
-	public Agence(String nomAgence, Adresse adresse) {
+	public Agence(String nomAgence, String adresse) {
 		this.nomAgence = nomAgence;
 		this.adresse = adresse;
 	}
@@ -50,11 +50,11 @@ public class Agence {
 		this.nomAgence = nomAgence;
 	}
 
-	public Adresse getAdresse() {
+	public String getAdresse() {
 		return adresse;
 	}
 
-	public void setAdresse(Adresse adresse) {
+	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
