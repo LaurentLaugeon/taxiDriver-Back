@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
 	<section name="MavenCheckoutLocationPage">
 		<list key="scmUrl">
 		</list>
@@ -27,6 +28,11 @@
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
 			<item value="C:\Users\IN-DF-038\Documents\Formation_INTI\Projet_INTI\taxiDriver-Back"/>
+=======
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\wk_projet_back\taxiDriver-Back"/>
+>>>>>>> master
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
