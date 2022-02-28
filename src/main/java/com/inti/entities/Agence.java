@@ -1,17 +1,29 @@
 package com.inti.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-public class Agence {
+import com.inti.model.Adresse;
+
+@Entity
+public class Agence implements Serializable{
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idAgence; 
 	private String nomAgence; 
-	private String adresse;
+	@Embedded
+	private Adresse adresse;
 	
-	@OneToOne(mappedBy="agence")
+	@OneToOne
 	private ResponsableAgence responsableAgence; 
 	
 	@OneToMany(mappedBy="agence")
@@ -28,7 +40,7 @@ public class Agence {
 	public Agence() {
 	}
 
-	public Agence(String nomAgence, String adresse) {
+	public Agence(String nomAgence, Adresse adresse) {
 		this.nomAgence = nomAgence;
 		this.adresse = adresse;
 	}
@@ -50,12 +62,45 @@ public class Agence {
 		this.nomAgence = nomAgence;
 	}
 
-	public String getAdresse() {
+	
+	public Adresse getAdresse() {
 		return adresse;
 	}
 
-	public void setAdresse(String adresse) {
+	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+
+	public ResponsableAgence getResponsableAgence() {
+		return responsableAgence;
+	}
+
+	public void setResponsableAgence(ResponsableAgence responsableAgence) {
+		this.responsableAgence = responsableAgence;
+	}
+
+	public Set<Statistique> getStatistiques() {
+		return statistiques;
+	}
+
+	public void setStatistiques(Set<Statistique> statistiques) {
+		this.statistiques = statistiques;
+	}
+
+	public Set<Vehicule> getVehicules() {
+		return vehicules;
+	}
+
+	public void setVehicules(Set<Vehicule> vehicules) {
+		this.vehicules = vehicules;
+	}
+
+	public Set<Offre> getOffres() {
+		return offres;
+	}
+
+	public void setOffres(Set<Offre> offres) {
+		this.offres = offres;
 	}
 
 	// Methode toString

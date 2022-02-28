@@ -33,7 +33,9 @@ public class Reservation implements Serializable {
 	private String statut;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "reservation", joinColumns = @JoinColumn(name = "id_reservation", referencedColumnName = "idTrajet"), inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
+	@JoinTable(name = "reservation_trajet", 
+	joinColumns = @JoinColumn(name = "id_reservation", referencedColumnName = "idResa"), 
+	inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
 
 	@OneToOne

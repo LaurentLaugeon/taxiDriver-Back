@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import antlr.collections.List;
 
 @Entity
 public class Trajet implements Serializable {
@@ -23,7 +26,7 @@ public class Trajet implements Serializable {
 	private Date dateDep;
 	@Temporal(TemporalType.DATE)
 	private Date dateArr;
-
+	
 	public Trajet() {
 	}
 

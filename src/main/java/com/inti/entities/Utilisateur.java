@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.inti.model.Adresse;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -21,14 +25,16 @@ public class Utilisateur implements Serializable {
 	private Long idUser;
 	private String nom;
 	private String prenom;
-	@Column(unique = true)
+//	@Column(unique = true)
 	private String username;
 	private String password;
 	private String email;
+	@Embedded
+	private Adresse adresse;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "profil", 
-	joinColumns = @JoinColumn(name="id_user", referencedColumnName="idUtilisateur"),
+	joinColumns = @JoinColumn(name="id_user", referencedColumnName="idUser"),
 	inverseJoinColumns = @JoinColumn(name="id_role", referencedColumnName="idRole"))
 	private Set<Role> roles = new HashSet<>();
 

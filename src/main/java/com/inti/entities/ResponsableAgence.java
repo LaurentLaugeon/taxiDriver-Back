@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class ResponsableAgence extends Utilisateur implements Serializable{
-	@OneToOne(mappedBy = "responsableAgence")
+	@OneToOne
 	@JoinColumn(name = "id_agence")
 	private Agence agence;
 
@@ -28,6 +28,11 @@ public class ResponsableAgence extends Utilisateur implements Serializable{
 
 	public void setAgence(Agence agence) {
 		this.agence = agence;
+	}
+
+	@Override
+	public String toString() {
+		return "ResponsableAgence [agence=" + agence + "]";
 	}
 	
 }

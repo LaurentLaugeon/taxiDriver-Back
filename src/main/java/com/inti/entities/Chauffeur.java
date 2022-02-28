@@ -17,7 +17,7 @@ public class Chauffeur extends Utilisateur implements Serializable{
 	@OneToMany(mappedBy = "chauffeur")
 	private Set<Planning> plannings = new HashSet<>();
 	
-	@OneToOne(mappedBy = "chauffeur")
+	@OneToOne
 	@JoinColumn(name = "id_vehicule")
 	private Vehicule vehicule;
 	

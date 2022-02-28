@@ -1,10 +1,19 @@
 package com.inti.entities;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-public class Vehicule {
+@Entity
+public class Vehicule implements Serializable{
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idVehicule;
 	private String model;
 	private String immatriculation; 
@@ -12,7 +21,7 @@ public class Vehicule {
 	private int nbPlace; 
 	private double capaciteCoffre;
 	
-	@OneToOne(mappedBy="vehicule")
+	@OneToOne
 	private Chauffeur chauffeur; 
 	
 	@ManyToOne
