@@ -1,5 +1,6 @@
 package com.inti.entities;
 
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -66,6 +67,5 @@ public class Chauffeur extends Utilisateur implements Serializable{
 	public void setReservations(Set<Reservations> reservations) {
 		this.reservations = reservations;
 	}
-	
 	
 }
