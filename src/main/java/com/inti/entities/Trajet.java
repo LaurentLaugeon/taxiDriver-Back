@@ -7,19 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import antlr.collections.List;
+import com.inti.model.Adresse;
+
 
 @Entity
 public class Trajet implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTrajet;
-	private String adresseDep;
-	private String adresseArr;
+	private Adresse adresseDep;
+	private Adresse adresseArr;
 	private double distance;
 	private float duree;
 	@Temporal(TemporalType.DATE)
@@ -30,7 +30,7 @@ public class Trajet implements Serializable {
 	public Trajet() {
 	}
 
-	public Trajet(String adresseDep, String adresseArr, double distance, float duree, Date dateDep, Date dateArr) {
+	public Trajet(Adresse adresseDep, Adresse adresseArr, double distance, float duree, Date dateDep, Date dateArr) {
 		this.adresseDep = adresseDep;
 		this.adresseArr = adresseArr;
 		this.distance = distance;
@@ -47,19 +47,19 @@ public class Trajet implements Serializable {
 		this.idTrajet = idTrajet;
 	}
 
-	public String getAdresseDep() {
+	public Adresse getAdresseDep() {
 		return adresseDep;
 	}
 
-	public void setAdresseDep(String adresseDep) {
+	public void setAdresseDep(Adresse adresseDep) {
 		this.adresseDep = adresseDep;
 	}
 
-	public String getAdresseArr() {
+	public Adresse getAdresseArr() {
 		return adresseArr;
 	}
 
-	public void setAdresseArr(String adresseArr) {
+	public void setAdresseArr(Adresse adresseArr) {
 		this.adresseArr = adresseArr;
 	}
 
