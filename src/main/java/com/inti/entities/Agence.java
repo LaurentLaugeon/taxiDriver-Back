@@ -45,6 +45,14 @@ public class Agence implements Serializable{
 		this.adresse = adresse;
 	}
 
+	public Agence(String nomAgence, Adresse adresse, ResponsableAgence responsableAgence,
+			Set<Statistique> statistiques) {
+		this.nomAgence = nomAgence;
+		this.adresse = adresse;
+		this.responsableAgence = responsableAgence;
+		this.statistiques = statistiques;
+	}
+
 	//Getters et setters
 	public Long getIdAgence() {
 		return idAgence;

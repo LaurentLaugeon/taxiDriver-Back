@@ -29,6 +29,13 @@ public class Offre implements Serializable{
 		this.nbVoyFree = nbVoyFree;
 	}
 
+	
+	public Offre(int nbVoyFree, Agence agence) {
+		super();
+		this.nbVoyFree = nbVoyFree;
+		this.agence = agence;
+	}
+
 	// Getters et setters
 	public Long getIdOffre() {
 		return idOffre;
@@ -44,6 +51,14 @@ public class Offre implements Serializable{
 
 	public void setNbVoyFree(int nbVoyFree) {
 		this.nbVoyFree = nbVoyFree;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 	// Methode toString 

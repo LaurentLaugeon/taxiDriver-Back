@@ -32,12 +32,40 @@ public class Vehicule implements Serializable{
 	}
 
 	public Vehicule(String model, String immatriculation, double conso, int nbPlace, double capaciteCoffre) {
+		this.model = model;
+		this.immatriculation = immatriculation;
+		this.conso = conso;
+		this.nbPlace = nbPlace;
+		this.capaciteCoffre = capaciteCoffre;
+	}
+
+	
+	public Vehicule(String model, String immatriculation, double conso, int nbPlace, double capaciteCoffre,
+			Chauffeur chauffeur, Agence agence) {
 		super();
 		this.model = model;
 		this.immatriculation = immatriculation;
 		this.conso = conso;
 		this.nbPlace = nbPlace;
 		this.capaciteCoffre = capaciteCoffre;
+		this.chauffeur = chauffeur;
+		this.agence = agence;
+	}
+
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 	public Long getIdVehicule() {
