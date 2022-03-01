@@ -11,6 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.inti.model.Adresse;
+import com.inti.model.Adresse2;
 
 
 @Entity
@@ -19,7 +20,7 @@ public class Trajet implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTrajet;
 	private Adresse adresseDep;
-	private Adresse adresseArr;
+	private Adresse2 adresseArr;
 	private double distance;
 	private float duree;
 	@Temporal(TemporalType.DATE)
@@ -30,7 +31,7 @@ public class Trajet implements Serializable {
 	public Trajet() {
 	}
 
-	public Trajet(Adresse adresseDep, Adresse adresseArr, double distance, float duree, Date dateDep, Date dateArr) {
+	public Trajet(Adresse adresseDep, Adresse2 adresseArr, double distance, float duree, Date dateDep, Date dateArr) {
 		this.adresseDep = adresseDep;
 		this.adresseArr = adresseArr;
 		this.distance = distance;
@@ -55,11 +56,11 @@ public class Trajet implements Serializable {
 		this.adresseDep = adresseDep;
 	}
 
-	public Adresse getAdresseArr() {
+	public Adresse2 getAdresseArr() {
 		return adresseArr;
 	}
 
-	public void setAdresseArr(Adresse adresseArr) {
+	public void setAdresseArr(Adresse2 adresseArr) {
 		this.adresseArr = adresseArr;
 	}
 
