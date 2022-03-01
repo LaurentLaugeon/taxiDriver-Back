@@ -1,10 +1,29 @@
 package com.inti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inti.entities.Agence;
+import com.inti.entities.Chauffeur;
+import com.inti.entities.Reclamation;
+import com.inti.entities.ResponsableAgence;
+import com.inti.entities.Statistique;
+import com.inti.entities.Vehicule;
+import com.inti.service.interfaces.IAgenceService;
+import com.inti.service.interfaces.IChauffeurService;
+import com.inti.service.interfaces.IReclamationService;
 import com.inti.service.interfaces.IResponsableAgenceService;
+import com.inti.service.interfaces.IStatistiqueService;
+import com.inti.service.interfaces.IVehiculeService;
 
 @RestController
 @CrossOrigin
@@ -12,4 +31,119 @@ public class ResponsableAgenceController {
 
 	@Autowired
 	IResponsableAgenceService responsableAgenceService;
+	@Autowired
+	IStatistiqueService statistiqueService;
+	@Autowired
+	IAgenceService agenceService;
+	@Autowired
+	IChauffeurService chauffeurService;
+	@Autowired
+	IVehiculeService vehiculeService;
+	@Autowired
+	IReclamationService reclamationService;
+
+	// page d'acceuil pour les utilisateurs avec le role de responsable d'agence
+	@GetMapping("/respoAgence")
+	public List<ResponsableAgence> acceuilRespoAgence() {
+		return responsableAgenceService.findAll();
+	}
+
+	// Consultation des Statistiques
+	@GetMapping("/respoAgence/{idRespoAgence}/statistiques")
+	public List<Statistique> statRespoAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		Agence currentAgence = currentRespoAgence.getAgence();
+		return statistiqueService.findByAgence(currentAgence);
+	}
+
+	// Gestion des chauffeurs
+
+	// Afficher les chauffeurs de son agence
+	@GetMapping("/respoAgence/{idRespoAgence}/chauffeurs")
+	public List<Chauffeur> afficherChauffeursByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		Agence currentAgence = currentRespoAgence.getAgence();
+		return chauffeurService.findByAgence(currentAgence);
+	}
+
+	// Ajouter un chauffeur à son agence
+	@PostMapping("/respoAgence/saveChauffeur")
+	public Chauffeur saveChauffeurRespo(@RequestBody Chauffeur chauffeur) {
+		return chauffeurService.save(chauffeur);
+	}
+
+	// Editer un chauffeur de son agence (seulement modification de la voiture)
+	@PutMapping("respoAgence/{idChauffeur}")
+	public Chauffeur updateChauffeurRespo(@PathVariable("idChauffeur") Long idChauffeur,
+			@RequestBody Chauffeur chauffeur) {
+		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
+		currentChauffeur.setVehicule(chauffeur.getVehicule());
+		return chauffeurService.save(currentChauffeur);
+	}
+
+	// Supprimer un chauffeur de son agence
+	@DeleteMapping("respoAgence/{idChauffeur}")
+	public void deleteChauffeurRespo(@PathVariable("idChauffeur") Long idChauffeur) {
+		chauffeurService.delete(idChauffeur);
+	}
+
+	// Gestion des vehicules
+
+	// Afficher les vehicules de son agence
+	@GetMapping("/respoAgence/{idRespoAgence}/vehicules")
+	public List<Vehicule> afficherVehiculesByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		Agence currentAgence = currentRespoAgence.getAgence();
+		return vehiculeService.findByAgence(currentAgence);
+	}
+
+	// Ajouter un vehicule à son agence
+	@PostMapping("/respoAgence/saveVehicule")
+	public Vehicule saveVehiculeRespo(@RequestBody Vehicule vehicule) {
+		return vehiculeService.save(vehicule);
+	}
+
+	// Editer un vehicule de son agence
+	@PutMapping("respoAgence/{idVehicule}")
+	public Vehicule updateVehiculeRespo(@PathVariable("idVehicule") Long idVehicule, @RequestBody Vehicule vehicule) {
+		Vehicule currentVehicule = vehiculeService.findOne(idVehicule);
+		currentVehicule.setModel(vehicule.getModel());
+		currentVehicule.setImmatriculation(vehicule.getImmatriculation());
+		currentVehicule.setConso(vehicule.getConso());
+		currentVehicule.setNbPlace(vehicule.getNbPlace());
+		currentVehicule.setCapaciteCoffre(vehicule.getCapaciteCoffre());
+		currentVehicule.setAgence(vehicule.getAgence());
+		currentVehicule.setChauffeur(vehicule.getChauffeur());
+		return vehiculeService.save(currentVehicule);
+	}
+
+	// Supprimer un vehicule de son agence
+	@DeleteMapping("respoAgence/{idVehicule}")
+	public void deleteVehiculeRespo(@PathVariable("idVehicule") Long idVehicule) {
+		vehiculeService.delete(idVehicule);
+	}
+
+	// Gestion des reclamations
+
+	// Afficher les reclamations de son agence
+	@GetMapping("/respoAgence/{idRespoAgence}/reclamations")
+	public List<Reclamation> afficherReclamationsByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		Agence currentAgence = currentRespoAgence.getAgence();
+		return reclamationService.findByAgence(currentAgence);
+	}
+
+	// Editer une reclamation de son agence
+	@PutMapping("respoAgence/{idReclamation}")
+	public Reclamation updateReclamRespo(@PathVariable("idReclamation") Long idReclamation, @RequestBody Reclamation reclamation) {
+		Reclamation currentReclamation = reclamationService.findOne(idReclamation);
+		currentReclamation.setCommentaire(reclamation.getCommentaire());
+		return reclamationService.save(currentReclamation);
+	}
+
+	// Supprimer un vehicule de son agence
+	@DeleteMapping("respoAgence/{idVehicule}")
+	public void deleteVehiculeRespo(@PathVariable("idVehicule") Long idVehicule) {
+		vehiculeService.delete(idVehicule);
+	}
 }

@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
@@ -19,6 +21,7 @@ import com.inti.model.Adresse;
 import javax.persistence.JoinColumn;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Utilisateur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +44,6 @@ public class Utilisateur implements Serializable {
 	public Utilisateur() {
 	}
 	
-	
-
 	public Utilisateur(String nom, String prenom, String username, String password, String email, Adresse adresse,
 			Set<Role> roles) {
 		this.nom = nom;
@@ -54,8 +55,6 @@ public class Utilisateur implements Serializable {
 		this.roles = roles;
 	}
 
-
-
 	public Utilisateur(String nom, String prenom, String username, String password, String email, Adresse adresse) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -64,8 +63,6 @@ public class Utilisateur implements Serializable {
 		this.email = email;
 		this.adresse = adresse;
 	}
-
-
 
 	public Long getIdUser() {
 		return idUser;

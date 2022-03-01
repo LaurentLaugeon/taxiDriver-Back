@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Statistique;
 import com.inti.repositories.StatistiqueRepository;
 import com.inti.service.interfaces.IStatistiqueService;
@@ -32,5 +33,10 @@ public class StatistiqueService implements IStatistiqueService{
 	@Override
 	public void delete(Long idStatistique) {
 		statistiqueRepository.deleteById(idStatistique);
+	}
+
+	@Override
+	public List<Statistique> findByAgence(Agence agence) {
+		return statistiqueRepository.findByAgence(agence);
 	}
 }

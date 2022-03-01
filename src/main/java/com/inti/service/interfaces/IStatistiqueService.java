@@ -2,6 +2,7 @@ package com.inti.service.interfaces;
 
 import java.util.List;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Statistique;
 
 public interface IStatistiqueService {
@@ -12,4 +13,6 @@ public interface IStatistiqueService {
 	Statistique save(Statistique stats);
 
 	void delete(Long idStatistique);
+	
+	List<Statistique> findByAgence(Agence agence);
 }
