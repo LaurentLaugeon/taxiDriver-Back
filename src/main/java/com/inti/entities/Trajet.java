@@ -20,10 +20,8 @@ public class Trajet implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTrajet;
-	@Embedded
-	private Adresse adresse;
-	@Embedded
-	private Adresse2 adresse2;
+	private Adresse adresseDep;
+	private Adresse2 adresseArr;
 	private double distance;
 	private double duree;
 	@Temporal(TemporalType.DATE)
@@ -37,6 +35,7 @@ public class Trajet implements Serializable {
 		super();
 		this.adresse = adresse;
 		this.adresse2 = adresse2;
+
 		this.distance = distance;
 		this.duree = duree;
 		this.dateDep = dateDep;
@@ -54,11 +53,14 @@ public class Trajet implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	public Adresse2 getAdresse2() {
-		return adresse2;
+
+	public Adresse2 getAdresseArr() {
+		return adresseArr;
 	}
-	public void setAdresse2(Adresse2 adresse2) {
-		this.adresse2 = adresse2;
+
+	public void setAdresseArr(Adresse2 adresseArr) {
+		this.adresseArr = adresseArr;
+
 	}
 	public double getDistance() {
 		return distance;
