@@ -23,6 +23,7 @@ import javax.persistence.JoinColumn;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Utilisateur implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUtilisateur;
@@ -48,6 +49,7 @@ public abstract class Utilisateur implements Serializable {
 	}
 
 	public void setIdUtilisateur(Long idUtilisateur) {
+
 		this.idUtilisateur = idUtilisateur;
 	}
 
@@ -106,4 +108,6 @@ public abstract class Utilisateur implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+	
 }

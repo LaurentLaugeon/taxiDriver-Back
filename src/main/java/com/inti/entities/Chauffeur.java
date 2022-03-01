@@ -6,9 +6,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 public class Chauffeur extends Utilisateur implements Serializable{
@@ -23,6 +26,10 @@ public class Chauffeur extends Utilisateur implements Serializable{
 	
 	@OneToMany(mappedBy = "chauffeur")
 	private Set<Reservation> reservations = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name="id_agence")
+	private Agence agence;
 
 	public Chauffeur() {
 	}
@@ -37,11 +44,17 @@ public class Chauffeur extends Utilisateur implements Serializable{
 	}
 
 	public Chauffeur(double note, Set<Planning> plannings, Vehicule vehicule, Set<Reservation> reservations) {
-		super();
 		this.note = note;
 		this.plannings = plannings;
 		this.vehicule = vehicule;
 		this.reservations = reservations;
+	}
+
+	public Chauffeur(Set<Planning> plannings, Vehicule vehicule, Set<Reservation> reservations, Agence agence) {
+		this.plannings = plannings;
+		this.vehicule = vehicule;
+		this.reservations = reservations;
+		this.agence = agence;
 	}
 
 	public double getNote() {
@@ -74,6 +87,14 @@ public class Chauffeur extends Utilisateur implements Serializable{
 
 	public void setReservations(Set<Reservation> reservations) {
 		this.reservations = reservations;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 	
 }

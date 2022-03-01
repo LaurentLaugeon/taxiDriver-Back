@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Reclamation;
 import com.inti.repositories.ReclamationRepository;
 import com.inti.service.interfaces.IReclamationService;
@@ -32,5 +33,10 @@ public class ReclamationService implements IReclamationService{
 	@Override
 	public void delete(Long idReclamation) {
 		reclamationRepository.deleteById(idReclamation);
+	}
+
+	@Override
+	public List<Reclamation> findByAgence(Agence agence) {
+		return reclamationRepository.findByAgence(agence);
 	}
 }

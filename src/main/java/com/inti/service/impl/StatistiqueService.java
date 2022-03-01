@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inti.entities.Chauffeur;
+
 import com.inti.entities.Statistique;
 import com.inti.entities.Vehicule;
 import com.inti.repositories.StatistiqueRepository;
@@ -49,5 +50,6 @@ public class StatistiqueService implements IStatistiqueService{
 	@Override
 	public Chauffeur chauffeurGagnePlus() {
 		return statistiqueRepository.chauffeurGagnePlus();
+
 	}
 }

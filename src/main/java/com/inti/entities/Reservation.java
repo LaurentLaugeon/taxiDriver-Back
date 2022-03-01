@@ -45,6 +45,7 @@ public class Reservation implements Serializable {
 	private Facture facture;
 
 	@OneToOne(mappedBy="reservation")
+
 	private AvisClient avisClient;
 
 	@OneToMany(mappedBy = "reservation")

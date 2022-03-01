@@ -23,7 +23,7 @@ public class Agence implements Serializable{
 	@Embedded
 	private Adresse adresse;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "agence")
 	private ResponsableAgence responsableAgence; 
 	
 	@OneToMany(mappedBy="agence")
@@ -35,6 +35,8 @@ public class Agence implements Serializable{
 	@OneToMany(mappedBy="agence")
 	private Set<Offre> offres = new HashSet<>();
 	
+	@OneToMany(mappedBy="agence")
+	private Set<Chauffeur> chauffeurs = new HashSet<>();
 	
 	//Constructeurs
 	public Agence() {
@@ -51,6 +53,17 @@ public class Agence implements Serializable{
 		this.adresse = adresse;
 		this.responsableAgence = responsableAgence;
 		this.statistiques = statistiques;
+	}
+
+	public Agence(String nomAgence, Adresse adresse, ResponsableAgence responsableAgence, Set<Statistique> statistiques,
+			Set<Vehicule> vehicules, Set<Offre> offres, Set<Chauffeur> chauffeurs) {
+		this.nomAgence = nomAgence;
+		this.adresse = adresse;
+		this.responsableAgence = responsableAgence;
+		this.statistiques = statistiques;
+		this.vehicules = vehicules;
+		this.offres = offres;
+		this.chauffeurs = chauffeurs;
 	}
 
 	//Getters et setters
@@ -109,6 +122,14 @@ public class Agence implements Serializable{
 
 	public void setOffres(Set<Offre> offres) {
 		this.offres = offres;
+	}
+
+	public Set<Chauffeur> getChauffeurs() {
+		return chauffeurs;
+	}
+
+	public void setChauffeurs(Set<Chauffeur> chauffeurs) {
+		this.chauffeurs = chauffeurs;
 	}
 
 	// Methode toString
