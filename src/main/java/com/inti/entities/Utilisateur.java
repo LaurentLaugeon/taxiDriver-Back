@@ -40,15 +40,32 @@ public class Utilisateur implements Serializable {
 
 	public Utilisateur() {
 	}
+	
+	
 
-	public Utilisateur(String nom, String prenom, String username, String password, String email, Set<Role> roles) {
+	public Utilisateur(String nom, String prenom, String username, String password, String email, Adresse adresse,
+			Set<Role> roles) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.adresse = adresse;
 		this.roles = roles;
 	}
+
+
+
+	public Utilisateur(String nom, String prenom, String username, String password, String email, Adresse adresse) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.adresse = adresse;
+	}
+
+
 
 	public Long getIdUser() {
 		return idUser;
@@ -106,4 +123,11 @@ public class Utilisateur implements Serializable {
 		this.roles = roles;
 	}
 
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
 }

@@ -21,6 +21,11 @@ public class Client extends Utilisateur implements Serializable {
 		this.pointsFidelite = pointsFidelite;
 	}
 
+	public Client(int pointsFidelite, Set<Reservation> reservations) {
+		this.pointsFidelite = pointsFidelite;
+		this.reservations = reservations;
+	}
+
 	public int getPointsFidelite() {
 		return pointsFidelite;
 	}

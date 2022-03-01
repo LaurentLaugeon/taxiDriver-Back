@@ -14,11 +14,9 @@ public class ResponsableAgence extends Utilisateur implements Serializable{
 	private Agence agence;
 
 	public ResponsableAgence() {
-		super();
 	}
 
 	public ResponsableAgence(Agence agence) {
-		super();
 		this.agence = agence;
 	}
 
