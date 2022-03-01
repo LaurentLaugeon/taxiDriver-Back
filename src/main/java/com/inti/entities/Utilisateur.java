@@ -22,7 +22,7 @@ import javax.persistence.JoinColumn;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Utilisateur implements Serializable {
+public abstract class Utilisateur implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,39 +39,16 @@ public class Utilisateur implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "profil", 
 	joinColumns = @JoinColumn(name="id_utilisateur", referencedColumnName="idUtilisateur"),
-
 	inverseJoinColumns = @JoinColumn(name="id_role", referencedColumnName="idRole"))
 	private Set<Role> roles = new HashSet<>();
+
+	
 
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
 	}
-	
-	public Utilisateur(String nom, String prenom, String username, String password, String email, Adresse adresse,
-			Set<Role> roles) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.adresse = adresse;
-		this.roles = roles;
-	}
 
-	public Utilisateur(String nom, String prenom, String username, String password, String email, Adresse adresse) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.adresse = adresse;
-	}
-
-	public Long getIdUser() {
-		return idUtilisateur;
-	}
-
-	public void setIdUser(Long idUtilisateur) {
+	public void setIdUtilisateur(Long idUtilisateur) {
 
 		this.idUtilisateur = idUtilisateur;
 	}

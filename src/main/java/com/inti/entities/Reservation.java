@@ -38,13 +38,14 @@ public class Reservation implements Serializable {
 	inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
 
-	@OneToOne(mappedBy = "reservation")
+	@OneToOne(mappedBy="reservation") 
 	private Devis devis;
 
-	@OneToOne(mappedBy = "reservation")
+	@OneToOne(mappedBy="reservation")
 	private Facture facture;
 
-	@OneToOne(mappedBy = "reservation")
+	@OneToOne(mappedBy="reservation")
+
 	private AvisClient avisClient;
 
 	@OneToMany(mappedBy = "reservation")

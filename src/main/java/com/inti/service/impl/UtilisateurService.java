@@ -34,4 +34,5 @@ public class UtilisateurService implements IUtilisateurService{
 		utilisateurRepository.deleteById(idUtilisateur);
 	}
 
+
 }
