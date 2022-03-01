@@ -6,25 +6,27 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Chauffeur extends Utilisateur implements Serializable{
 	private double note;
 	
 	@OneToMany(mappedBy = "chauffeur")
+	@JsonIgnore
 	private Set<Planning> plannings = new HashSet<>();
 	
-	@OneToOne
+	@OneToOne(mappedBy = "chauffeur")
 	@JoinColumn(name = "id_vehicule")
 	private Vehicule vehicule;
 	
 	@OneToMany(mappedBy = "chauffeur")
+	@JsonIgnore
 	private Set<Reservation> reservations = new HashSet<>();
 	
 	@ManyToOne

@@ -23,17 +23,19 @@ public class Trajet implements Serializable {
 	private Adresse adresseDep;
 	private Adresse2 adresseArr;
 	private double distance;
-	private float duree;
+	private double duree;
 	@Temporal(TemporalType.DATE)
 	private Date dateDep;
 	@Temporal(TemporalType.DATE)
 	private Date dateArr;
+	
 	public Trajet() {
 	}
+	public Trajet(Adresse adresse, Adresse2 adresse2, double distance, double duree, Date dateDep, Date dateArr) {
+		super();
+		this.adresse = adresse;
+		this.adresse2 = adresse2;
 
-	public Trajet(Adresse adresseDep, Adresse2 adresseArr, double distance, float duree, Date dateDep, Date dateArr) {
-		this.adresseDep = adresseDep;
-		this.adresseArr = adresseArr;
 		this.distance = distance;
 		this.duree = duree;
 		this.dateDep = dateDep;
@@ -66,10 +68,10 @@ public class Trajet implements Serializable {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-	public float getDuree() {
+	public double getDuree() {
 		return duree;
 	}
-	public void setDuree(float duree) {
+	public void setDuree(double duree) {
 		this.duree = duree;
 	}
 	public Date getDateDep() {

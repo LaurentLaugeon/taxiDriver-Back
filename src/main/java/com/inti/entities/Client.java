@@ -7,11 +7,14 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Client extends Utilisateur implements Serializable {
 	private int pointsFidelite;
 	
 	@OneToMany(mappedBy = "client")
+	@JsonIgnore
 	private Set<Reservation> reservations = new HashSet<>();
 
 	public Client() {
