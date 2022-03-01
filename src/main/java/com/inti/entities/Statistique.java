@@ -30,6 +30,12 @@ public class Statistique implements Serializable{
 		this.valeur = valeur;
 	}
 
+	public Statistique(String libelle, String valeur, Agence agence) {
+		this.libelle = libelle;
+		this.valeur = valeur;
+		this.agence = agence;
+	}
+
 	//Getters et setters
 	public Long getIdStatistique() {
 		return idStatistique;
@@ -53,6 +59,14 @@ public class Statistique implements Serializable{
 
 	public void setValeur(String valeur) {
 		this.valeur = valeur;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 	// Methode toString
