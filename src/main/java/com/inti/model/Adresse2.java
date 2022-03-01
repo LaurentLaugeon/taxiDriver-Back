@@ -12,8 +12,7 @@ public class Adresse2 implements Serializable{
 	public Adresse2() {
 	
 	}
-	
-	public Adresse2(String rue_arr, String codePostal_arr, String ville_arr) {
+		public Adresse2(String rue_arr, String codePostal_arr, String ville_arr) {
 		super();
 		this.rue_arr = rue_arr;
 		this.codePostal_arr = codePostal_arr;
@@ -42,6 +41,7 @@ public class Adresse2 implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+
 		result = prime * result + ((codePostal_arr == null) ? 0 : codePostal_arr.hashCode());
 		result = prime * result + ((rue_arr == null) ? 0 : rue_arr.hashCode());
 		result = prime * result + ((ville_arr == null) ? 0 : ville_arr.hashCode());
@@ -70,12 +70,14 @@ public class Adresse2 implements Serializable{
 			if (other.ville_arr != null)
 				return false;
 		} else if (!ville_arr.equals(other.ville_arr))
+
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
 		return "Adresse [rue_arr=" + rue_arr + ", codePostal_arr=" + codePostal_arr + ", ville_arr=" + ville_arr + "]";
+
 	}
 	
 }
