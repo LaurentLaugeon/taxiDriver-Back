@@ -6,45 +6,45 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Adresse2 implements Serializable{
-	private String rueArr;
-	private String codePostalArr;
-	private String villeArr;
+	private String rue_arr;
+	private String codePostal_arr;
+	private String ville_arr;
 	public Adresse2() {
 	
 	}
-	
-	public Adresse2(String rueArr, String codePostalArr, String villeArr) {
+		public Adresse2(String rue_arr, String codePostal_arr, String ville_arr) {
 		super();
-		this.rueArr = rueArr;
-		this.codePostalArr = codePostalArr;
-		this.villeArr = villeArr;
+		this.rue_arr = rue_arr;
+		this.codePostal_arr = codePostal_arr;
+		this.ville_arr = ville_arr;
 	}
 
 	public String getRue() {
-		return rueArr;
+		return rue_arr;
 	}
-	public void setRue(String rueArr) {
-		this.rueArr = rueArr;
+	public void setRue(String rue_arr) {
+		this.rue_arr = rue_arr;
 	}
 	public String getCodePostal() {
-		return codePostalArr;
+		return codePostal_arr;
 	}
-	public void setCodePostal(String codePostalArr) {
-		this.codePostalArr = codePostalArr;
+	public void setCodePostal(String codePostal_arr) {
+		this.codePostal_arr = codePostal_arr;
 	}
 	public String getVille() {
-		return villeArr;
+		return ville_arr;
 	}
-	public void setVille(String villeArr) {
-		this.villeArr = villeArr;
+	public void setVille(String ville_arr) {
+		this.ville_arr = ville_arr;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codePostalArr == null) ? 0 : codePostalArr.hashCode());
-		result = prime * result + ((rueArr == null) ? 0 : rueArr.hashCode());
-		result = prime * result + ((villeArr == null) ? 0 : villeArr.hashCode());
+
+		result = prime * result + ((codePostal_arr == null) ? 0 : codePostal_arr.hashCode());
+		result = prime * result + ((rue_arr == null) ? 0 : rue_arr.hashCode());
+		result = prime * result + ((ville_arr == null) ? 0 : ville_arr.hashCode());
 		return result;
 	}
 	@Override
@@ -56,26 +56,28 @@ public class Adresse2 implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Adresse2 other = (Adresse2) obj;
-		if (codePostalArr == null) {
-			if (other.codePostalArr != null)
+		if (codePostal_arr == null) {
+			if (other.codePostal_arr != null)
 				return false;
-		} else if (!codePostalArr.equals(other.codePostalArr))
+		} else if (!codePostal_arr.equals(other.codePostal_arr))
 			return false;
-		if (rueArr == null) {
-			if (other.rueArr != null)
+		if (rue_arr == null) {
+			if (other.rue_arr != null)
 				return false;
-		} else if (!rueArr.equals(other.rueArr))
+		} else if (!rue_arr.equals(other.rue_arr))
 			return false;
-		if (villeArr == null) {
-			if (other.villeArr != null)
+		if (ville_arr == null) {
+			if (other.ville_arr != null)
 				return false;
-		} else if (!villeArr.equals(other.villeArr))
+		} else if (!ville_arr.equals(other.ville_arr))
+
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Adresse2 [rueArr=" + rueArr + ", codePostalArr=" + codePostalArr + ", villeArr=" + villeArr + "]";
+		return "Adresse [rue_arr=" + rue_arr + ", codePostal_arr=" + codePostal_arr + ", ville_arr=" + ville_arr + "]";
+
 	}
 	
 }

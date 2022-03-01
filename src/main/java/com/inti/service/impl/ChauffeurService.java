@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Chauffeur;
 import com.inti.repositories.ChauffeurRepository;
 import com.inti.service.interfaces.IChauffeurService;
@@ -32,5 +33,10 @@ public class ChauffeurService implements IChauffeurService{
 	@Override
 	public void delete(Long idChauffeur) {
 		chauffeurRepository.deleteById(idChauffeur);
+	}
+
+	@Override
+	public List<Chauffeur> findByAgence(Agence agence) {
+		return chauffeurRepository.findByAgence(agence);
 	}
 }
