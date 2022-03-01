@@ -25,14 +25,15 @@ public class Trajet implements Serializable {
 	@Embedded
 	private Adresse2 adresse2;
 	private double distance;
-	private float duree;
+	private double duree;
 	@Temporal(TemporalType.DATE)
 	private Date dateDep;
 	@Temporal(TemporalType.DATE)
 	private Date dateArr;
+	
 	public Trajet() {
 	}
-	public Trajet(Adresse adresse, Adresse2 adresse2, double distance, float duree, Date dateDep, Date dateArr) {
+	public Trajet(Adresse adresse, Adresse2 adresse2, double distance, double duree, Date dateDep, Date dateArr) {
 		super();
 		this.adresse = adresse;
 		this.adresse2 = adresse2;
@@ -65,10 +66,10 @@ public class Trajet implements Serializable {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-	public float getDuree() {
+	public double getDuree() {
 		return duree;
 	}
-	public void setDuree(float duree) {
+	public void setDuree(double duree) {
 		this.duree = duree;
 	}
 	public Date getDateDep() {

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +20,8 @@ public class Devis implements Serializable {
 	private double prixTot;
 	@Temporal(TemporalType.DATE)
 	private Date dateDevis;
-	@OneToOne(mappedBy = "devis")
+	@OneToOne
+	@JoinColumn(name="id_reservation")
 	private Reservation reservation;
 
 	public Devis() {

@@ -21,6 +21,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Reservation implements Serializable {
 	@Id
@@ -36,21 +38,20 @@ public class Reservation implements Serializable {
 	@JoinTable(name = "reservation_trajet", 
 	joinColumns = @JoinColumn(name = "id_reservation", referencedColumnName = "idResa"), 
 	inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
+	@JsonIgnore
 	private Set<Trajet> trajets = new HashSet<>();
 
-	@OneToOne
-	@JoinColumn(name = "id_devis")
+	@OneToOne(mappedBy="reservation")
 	private Devis devis;
 
-	@OneToOne
-	@JoinColumn(name = "id_facture")
+	@OneToOne(mappedBy="reservation")
 	private Facture facture;
 
-	@OneToOne
-	@JoinColumn(name = "id_avisClient")
+	@OneToOne(mappedBy="reservation")
 	private AvisClient avisClient;
 
 	@OneToMany(mappedBy = "reservation")
+	@JsonIgnore
 	List<Reclamation> reclamations = new ArrayList<>();
 
 	@ManyToOne

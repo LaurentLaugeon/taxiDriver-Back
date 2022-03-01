@@ -16,6 +16,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inti.model.Adresse;
 
 import javax.persistence.JoinColumn;
@@ -37,8 +38,9 @@ public abstract class Utilisateur implements Serializable {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "profil", 
-	joinColumns = @JoinColumn(name="id_user", referencedColumnName="IdUtilisateur"),
+	joinColumns = @JoinColumn(name="id_utilisateur", referencedColumnName="IdUtilisateur"),
 	inverseJoinColumns = @JoinColumn(name="id_role", referencedColumnName="idRole"))
+	@JsonIgnore
 	private Set<Role> roles = new HashSet<>();
 
 	public Long getIdUtilisateur() {

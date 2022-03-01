@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inti.model.Adresse;
 
 @Entity
@@ -23,16 +24,19 @@ public class Agence implements Serializable{
 	@Embedded
 	private Adresse adresse;
 	
-	@OneToOne
+	@OneToOne(mappedBy="agence")
 	private ResponsableAgence responsableAgence; 
 	
 	@OneToMany(mappedBy="agence")
+	@JsonIgnore
 	private Set<Statistique> statistiques = new HashSet<>();
 	
 	@OneToMany(mappedBy="agence")
+	@JsonIgnore
 	private Set<Vehicule> vehicules = new HashSet<>();
 	
 	@OneToMany(mappedBy="agence")
+	@JsonIgnore
 	private Set<Offre> offres = new HashSet<>();
 	
 	

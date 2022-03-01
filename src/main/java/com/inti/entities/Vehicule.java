@@ -22,7 +22,6 @@ public class Vehicule implements Serializable{
 	private double capaciteCoffre;
 	
 	@OneToOne
-	@JoinColumn(name="id_chauffeur")
 	private Chauffeur chauffeur; 
 	
 	@ManyToOne
