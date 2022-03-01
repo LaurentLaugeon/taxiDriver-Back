@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -33,7 +34,7 @@ public class Client extends Utilisateur implements Serializable {
 		return pointsFidelite;
 	}
 
-	public void setPointsFidelite(int pointsFidelite) {
+	public void SetPointsFidelite(int pointsFidelite) {
 		this.pointsFidelite = pointsFidelite;
 	}
 
@@ -41,7 +42,7 @@ public class Client extends Utilisateur implements Serializable {
 		return reservations;
 	}
 
-	public void setReservations(Set<Reservation> reservations) {
+	public void SetReservations(Set<Reservation> reservations) {
 		this.reservations = reservations;
 	}
 

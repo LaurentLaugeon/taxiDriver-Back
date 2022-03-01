@@ -1,10 +1,8 @@
 package com.inti.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -38,23 +36,20 @@ public class Reservation implements Serializable {
 	inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
 
-	@OneToOne
-	@JoinColumn(name = "id_devis")
+	@OneToOne(mappedBy = "reservation")
 	private Devis devis;
 
-	@OneToOne
-	@JoinColumn(name = "id_facture")
+	@OneToOne(mappedBy = "reservation")
 	private Facture facture;
 
-	@OneToOne
-	@JoinColumn(name = "id_avisClient")
-	private AvisClient avisClient;
+	@OneToOne(mappedBy = "reservation")
+    private AvisClient avisClient;
 
 	@OneToMany(mappedBy = "reservation")
-	List<Reclamation> reclamations = new ArrayList<>();
+	Set<Reclamation> reclamations = new HashSet<>();
 
 	@ManyToOne
-	@JoinColumn(name = "id_Client")
+	@JoinColumn(name = "id_client")
 	private Client client;
 
 	@ManyToOne
@@ -65,7 +60,7 @@ public class Reservation implements Serializable {
 	}
 
 	public Reservation(Date dateCreation, Date dateValidation, String statut, Set<Trajet> trajets, Devis devis,
-			Facture facture, AvisClient avisClient, List<Reclamation> reclamations, Client client,
+			Facture facture, AvisClient avisClient, Set<Reclamation> reclamations, Client client,
 			Chauffeur chauffeur) {
 		this.dateCreation = dateCreation;
 		this.dateValidation = dateValidation;
@@ -143,11 +138,11 @@ public class Reservation implements Serializable {
 		this.avisClient = avisClient;
 	}
 
-	public List<Reclamation> getReclamations() {
+	public Set<Reclamation> getReclamations() {
 		return reclamations;
 	}
 
-	public void setReclamations(List<Reclamation> reclamations) {
+	public void setReclamations(Set<Reclamation> reclamations) {
 		this.reclamations = reclamations;
 	}
 
