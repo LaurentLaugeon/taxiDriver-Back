@@ -12,4 +12,5 @@ public interface IStatistiqueService {
 	Statistique save(Statistique stats);
 
 	void delete(Long idStatistique);
+	
 }
