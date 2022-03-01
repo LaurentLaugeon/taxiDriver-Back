@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inti.entities.Chauffeur;
 import com.inti.entities.Statistique;
+import com.inti.entities.Vehicule;
 import com.inti.repositories.StatistiqueRepository;
 import com.inti.service.interfaces.IStatistiqueService;
 
@@ -32,5 +34,20 @@ public class StatistiqueService implements IStatistiqueService{
 	@Override
 	public void delete(Long idStatistique) {
 		statistiqueRepository.deleteById(idStatistique);
+	}
+
+	@Override
+	public List<Chauffeur> chauffeursOrderBy() {
+		return statistiqueRepository.chauffeursOrderBy();
+	}
+
+	@Override
+	public Vehicule vehiculeConsoPlus() {
+		return statistiqueRepository.vehiculeConsoPlus();
+	}
+
+	@Override
+	public Chauffeur chauffeurGagnePlus() {
+		return statistiqueRepository.chauffeurGagnePlus();
 	}
 }

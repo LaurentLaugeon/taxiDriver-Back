@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Administrateur;
+import com.inti.entities.AvisClient;
 import com.inti.entities.Statistique;
 import com.inti.entities.Utilisateur;
 import com.inti.service.interfaces.IAdministrateurService;
+import com.inti.service.interfaces.IAvisClientService;
 import com.inti.service.interfaces.IStatistiqueService;
 import com.inti.service.interfaces.IUtilisateurService;
 
@@ -34,9 +36,13 @@ public class AdministrateurController {
 	@Autowired
 	IStatistiqueService statistiqueService;
 	
+	@Autowired
+	IAvisClientService avisClientService;
+	
+	
 		//Afficher la liste des administrateurs
 		@GetMapping("administrateurs") 
-		public List<Administrateur> findAll(){
+		public List<Administrateur> findAllAdmin(){
 			return administrateurService.findAll();
 		}
 		
@@ -65,6 +71,12 @@ public class AdministrateurController {
 			currentUtilisateur.setAdresse(utilisateur.getAdresse());
 			currentUtilisateur.setRoles(utilisateur.getRoles()); 
 			return utilisateurService.save(currentUtilisateur);
+		}
+		
+		//Afficher la liste des commentaires
+		@GetMapping("administrateur/avisClient") 
+		public List<AvisClient> findAllAvis(){
+			return avisClientService.findAll();
 		}
 		
 		// Supprimer un commentaire
