@@ -2,6 +2,7 @@ package com.inti.service.interfaces;
 
 import java.util.List;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Offre;
 
 public interface IOffreService {
@@ -12,4 +13,7 @@ public interface IOffreService {
 	Offre save(Offre offre);
 
 	void delete(Long idOffre);
+	
+	List<Offre> findByAgence(Agence agence);
+
 }

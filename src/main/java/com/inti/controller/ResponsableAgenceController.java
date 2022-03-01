@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Agence;
 import com.inti.entities.Chauffeur;
+import com.inti.entities.Offre;
 import com.inti.entities.Reclamation;
+import com.inti.entities.Reservation;
 import com.inti.entities.ResponsableAgence;
 import com.inti.entities.Statistique;
 import com.inti.entities.Vehicule;
 import com.inti.service.interfaces.IAgenceService;
 import com.inti.service.interfaces.IChauffeurService;
+import com.inti.service.interfaces.IOffreService;
 import com.inti.service.interfaces.IReclamationService;
+import com.inti.service.interfaces.IReservationService;
 import com.inti.service.interfaces.IResponsableAgenceService;
 import com.inti.service.interfaces.IStatistiqueService;
 import com.inti.service.interfaces.IVehiculeService;
@@ -41,6 +45,10 @@ public class ResponsableAgenceController {
 	IVehiculeService vehiculeService;
 	@Autowired
 	IReclamationService reclamationService;
+	@Autowired
+	IOffreService offreService;
+	@Autowired
+	IReservationService reservationService;
 
 	// page d'acceuil pour les utilisateurs avec le role de responsable d'agence
 	@GetMapping("/respoAgence")
@@ -49,7 +57,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Consultation des Statistiques
-	@GetMapping("/respoAgence/{idRespoAgence}/statistiques")
+	@GetMapping("/respoAgence/statistiques/{idRespoAgence}")
 	public List<Statistique> statRespoAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
 		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
 		Agence currentAgence = currentRespoAgence.getAgence();
@@ -59,7 +67,7 @@ public class ResponsableAgenceController {
 	// Gestion des chauffeurs
 
 	// Afficher les chauffeurs de son agence
-	@GetMapping("/respoAgence/{idRespoAgence}/chauffeurs")
+	@GetMapping("/respoAgence/chauffeurs/{idRespoAgence}")
 	public List<Chauffeur> afficherChauffeursByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
 		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
 		Agence currentAgence = currentRespoAgence.getAgence();
@@ -90,7 +98,7 @@ public class ResponsableAgenceController {
 	// Gestion des vehicules
 
 	// Afficher les vehicules de son agence
-	@GetMapping("/respoAgence/{idRespoAgence}/vehicules")
+	@GetMapping("/respoAgence/vehicules/{idRespoAgence}")
 	public List<Vehicule> afficherVehiculesByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
 		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
 		Agence currentAgence = currentRespoAgence.getAgence();
@@ -126,24 +134,91 @@ public class ResponsableAgenceController {
 	// Gestion des reclamations
 
 	// Afficher les reclamations de son agence
-	@GetMapping("/respoAgence/{idRespoAgence}/reclamations")
-	public List<Reclamation> afficherReclamationsByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+	@GetMapping("respoAgence/reclamations/{id}")
+	public List<Reclamation> afficherReclamationsByAgence(@PathVariable("id") Long idRespoAgence) {
 		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		System.out.println(currentRespoAgence.getNom());
 		Agence currentAgence = currentRespoAgence.getAgence();
 		return reclamationService.findByAgence(currentAgence);
 	}
 
 	// Editer une reclamation de son agence
 	@PutMapping("respoAgence/{idReclamation}")
-	public Reclamation updateReclamRespo(@PathVariable("idReclamation") Long idReclamation, @RequestBody Reclamation reclamation) {
+	public Reclamation updateReclamationRespo(@PathVariable("idReclamation") Long idReclamation,
+			@RequestBody Reclamation reclamation) {
 		Reclamation currentReclamation = reclamationService.findOne(idReclamation);
 		currentReclamation.setCommentaire(reclamation.getCommentaire());
 		return reclamationService.save(currentReclamation);
 	}
 
-	// Supprimer un vehicule de son agence
-	@DeleteMapping("respoAgence/{idVehicule}")
-	public void deleteVehiculeRespo(@PathVariable("idVehicule") Long idVehicule) {
-		vehiculeService.delete(idVehicule);
+	// Supprimer un reclamation de son agence
+	@DeleteMapping("respoAgence/{idReclamation}")
+	public void deleteReclamationRespo(@PathVariable("idReclamation") Long idReclamation) {
+		reclamationService.delete(idReclamation);
 	}
+
+	// Gestion des offres
+
+	// Afficher les offres de son agence
+	@GetMapping("/respoAgence/offres/{idRespoAgence}")
+	public List<Offre> afficherOffresByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		Agence currentAgence = currentRespoAgence.getAgence();
+		return offreService.findByAgence(currentAgence);
+	}
+
+	// Ajouter une offre à son agence
+	@PostMapping("/respoAgence/saveOffre")
+	public Offre saveOffreRespo(@RequestBody Offre offre) {
+		return offreService.save(offre);
+	}
+
+	// Editer une offre de son agence
+	@PutMapping("respoAgence/{idOffre}")
+	public Offre updateOffreRespo(@PathVariable("idOffre") Long idOffre, @RequestBody Offre offre) {
+		Offre currentOffre = offreService.findOne(idOffre);
+		currentOffre.setNbVoyFree(offre.getNbVoyFree());
+		return offreService.save(currentOffre);
+	}
+
+	// Supprimer un offre de son agence
+	@DeleteMapping("respoAgence/{idOffre}")
+	public void deleteOffreRespo(@PathVariable("idOffre") Long idOffre) {
+		offreService.delete(idOffre);
+	}
+
+	// Gestion des reservations
+
+	// Afficher les reservations de son agence
+	@GetMapping("/respoAgence/reservations/{idRespoAgence}")
+	public List<Reservation> afficherReservationsByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		Agence currentAgence = currentRespoAgence.getAgence();
+		return reservationService.findByAgence(currentAgence);
+	}
+
+	// Ajouter un devis de son agence
+	@PutMapping("respoAgence/devis/{idReservation}")
+	public Reservation updateDevisRespo(@PathVariable("idReservation") Long idReservation,
+			@RequestBody Reservation reservation) {
+		Reservation currentReservation = reservationService.findOne(idReservation);
+		currentReservation.setDevis(reservation.getDevis());
+		return reservationService.save(currentReservation);
+	}
+
+	// Ajouter une facture de son agence
+	@PutMapping("respoAgence/facture/{idReservation}")
+	public Reservation updateFactureRespo(@PathVariable("idReservation") Long idReservation,
+			@RequestBody Reservation reservation) {
+		Reservation currentReservation = reservationService.findOne(idReservation);
+		currentReservation.setFacture(reservation.getFacture());
+		return reservationService.save(currentReservation);
+	}
+
+	// Supprimer un Reservation de son agence
+	@DeleteMapping("respoAgence/{idReservation}")
+	public void deleteReservationRespo(@PathVariable("idReservation") Long idReservation) {
+		reservationService.delete(idReservation);
+	}
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Offre;
 import com.inti.repositories.OffreRepository;
 import com.inti.service.interfaces.IOffreService;
@@ -32,5 +33,10 @@ public class OffreService implements IOffreService{
 	@Override
 	public void delete(Long idOffre) {
 		offreRepository.deleteById(idOffre);
+	}
+
+	@Override
+	public List<Offre> findByAgence(Agence agence) {
+		return offreRepository.findByAgence(agence);
 	}
 }

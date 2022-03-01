@@ -23,7 +23,7 @@ public class Agence implements Serializable{
 	@Embedded
 	private Adresse adresse;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "agence")
 	private ResponsableAgence responsableAgence; 
 	
 	@OneToMany(mappedBy="agence")

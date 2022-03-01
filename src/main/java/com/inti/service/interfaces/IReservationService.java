@@ -2,6 +2,7 @@ package com.inti.service.interfaces;
 
 import java.util.List;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Reservation;
 
 public interface IReservationService {
@@ -12,4 +13,6 @@ public interface IReservationService {
 	Reservation save(Reservation reservation);
 
 	void delete(Long idReservation);
+	
+	List<Reservation> findByAgence(Agence agence);
 }
