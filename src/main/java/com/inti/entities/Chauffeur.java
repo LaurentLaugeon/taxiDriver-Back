@@ -36,6 +36,14 @@ public class Chauffeur extends Utilisateur implements Serializable{
 		this.vehicule = vehicule;
 	}
 
+	public Chauffeur(double note, Set<Planning> plannings, Vehicule vehicule, Set<Reservation> reservations) {
+		super();
+		this.note = note;
+		this.plannings = plannings;
+		this.vehicule = vehicule;
+		this.reservations = reservations;
+	}
+
 	public double getNote() {
 		return note;
 	}

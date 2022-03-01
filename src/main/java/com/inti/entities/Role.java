@@ -13,11 +13,16 @@ public class Role implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idRole;
-	//@Column(unique = true) = pour avoir que un role admin
 	private String libelle;
+	
 	public Role() {
 		
 	}
+	
+	public Role(String libelle) {
+		this.libelle = libelle;
+	}
+
 	public Long getIdRole() {
 		return idRole;
 	}
