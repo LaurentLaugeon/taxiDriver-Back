@@ -33,5 +33,10 @@ public class AvisClientService implements IAvisClientService{
 	public void delete(Long idAvisClient) {
 		avisClientRepository.deleteById(idAvisClient);
 	}
+
+	@Override
+	public List<AvisClient> findByChauffeur(Long idChauffeur) {
+		return avisClientRepository.findByChauffeur(idChauffeur);
+	}
 	
 }

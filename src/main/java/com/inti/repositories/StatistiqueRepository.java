@@ -16,11 +16,11 @@ public interface StatistiqueRepository extends JpaRepository<Statistique, Long>{
 
 	// Faire la liste des Chauffeurs du mieux noté au moins bien noté 
 	@Query(value="SELECT * from Chauffeur ORDER BY note", nativeQuery=true)
-	List<Chauffeur> chauffeursOrderBy();
+	public List<Chauffeur> chauffeursOrderBy();
 	
 	// Voiture qui consomme le plus 
-	@Query(value="MAX (conso) FROM Vehicule", nativeQuery=true)
-	Vehicule vehiculeConsoPlus();
+	@Query(value="MAX (conso) FROM vehicule", nativeQuery=true)
+	public Vehicule vehiculeConsoPlus();
 	
 	// Chauffeur qui fait gagner le + (somme des ses factures qui est la plus élevée)
 	@Query(value="SELECT * FROM Chauffeur "

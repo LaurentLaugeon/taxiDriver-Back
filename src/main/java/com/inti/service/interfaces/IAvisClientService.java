@@ -13,4 +13,6 @@ public interface IAvisClientService {
 
 	void delete(Long idAvisClient);
 	
+	List<AvisClient> findByChauffeur(Long idChauffeur);
+	
 }
