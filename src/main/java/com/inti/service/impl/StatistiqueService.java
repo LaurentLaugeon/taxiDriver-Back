@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Chauffeur;
 
 import com.inti.entities.Statistique;
@@ -51,5 +52,9 @@ public class StatistiqueService implements IStatistiqueService{
 	public Chauffeur chauffeurGagnePlus() {
 		return statistiqueRepository.chauffeurGagnePlus();
 
+	}
+	@Override
+	public List<Statistique> findByAgence(Agence agence) {
+		return statistiqueRepository.findByAgence(agence);
 	}
 }

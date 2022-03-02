@@ -31,27 +31,31 @@ public class Trajet implements Serializable {
 	
 	public Trajet() {
 	}
-	public Trajet(Adresse adresse, Adresse2 adresse2, double distance, double duree, Date dateDep, Date dateArr) {
-		super();
-		this.adresse = adresse;
-		this.adresse2 = adresse2;
 
+	public Trajet(Adresse adresseDep, Adresse2 adresseArr, double distance, double duree, Date dateDep, Date dateArr) {
+		super();
+		this.adresseDep = adresseDep;
+		this.adresseArr = adresseArr;
 		this.distance = distance;
 		this.duree = duree;
 		this.dateDep = dateDep;
 		this.dateArr = dateArr;
 	}
+
 	public Long getIdTrajet() {
 		return idTrajet;
 	}
 	public void setIdTrajet(Long idTrajet) {
 		this.idTrajet = idTrajet;
 	}
-	public Adresse getAdresse() {
-		return adresse;
+
+
+	public Adresse getAdresseDep() {
+		return adresseDep;
 	}
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
+
+	public void setAdresseDep(Adresse adresseDep) {
+		this.adresseDep = adresseDep;
 	}
 
 	public Adresse2 getAdresseArr() {
@@ -86,12 +90,13 @@ public class Trajet implements Serializable {
 	public void setDateArr(Date dateArr) {
 		this.dateArr = dateArr;
 	}
+
 	@Override
 	public String toString() {
-		return "Trajet [idTrajet=" + idTrajet + ", adresse=" + adresse + ", adresse2=" + adresse2 + ", distance="
-				+ distance + ", duree=" + duree + ", dateDep=" + dateDep + ", dateArr=" + dateArr + "]";
+		return "Trajet [idTrajet=" + idTrajet + ", adresseDep=" + adresseDep + ", adresseArr=" + adresseArr
+				+ ", distance=" + distance + ", duree=" + duree + ", dateDep=" + dateDep + ", dateArr=" + dateArr + "]";
 	}
-	
+
 	
 
 }
