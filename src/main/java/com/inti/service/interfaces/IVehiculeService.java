@@ -2,6 +2,7 @@ package com.inti.service.interfaces;
 
 import java.util.List;
 
+import com.inti.entities.Agence;
 import com.inti.entities.Vehicule;
 
 public interface IVehiculeService {
@@ -12,4 +13,6 @@ public interface IVehiculeService {
 	Vehicule save(Vehicule vehicule);
 
 	void delete(Long idVehicule);
+	
+	List<Vehicule> findByAgence(Agence agence);
 }	

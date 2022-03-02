@@ -12,31 +12,39 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inti.model.Adresse;
 
 @Entity
-public class Agence implements Serializable{
+public class Agence implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idAgence; 
-	private String nomAgence; 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idAgence;
+	private String nomAgence;
 	@Embedded
 	private Adresse adresse;
-	
-	@OneToOne
-	private ResponsableAgence responsableAgence; 
-	
-	@OneToMany(mappedBy="agence")
+
+	@OneToOne(mappedBy = "agence")
+	@JsonIgnore
+	private ResponsableAgence responsableAgence;
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private Set<Statistique> statistiques = new HashSet<>();
-	
-	@OneToMany(mappedBy="agence")
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private Set<Vehicule> vehicules = new HashSet<>();
-	
-	@OneToMany(mappedBy="agence")
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private Set<Offre> offres = new HashSet<>();
-	
-	
-	//Constructeurs
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
+	private Set<Chauffeur> chauffeurs = new HashSet<>();
+
+	// Constructeurs
 	public Agence() {
 	}
 
@@ -53,7 +61,18 @@ public class Agence implements Serializable{
 		this.statistiques = statistiques;
 	}
 
-	//Getters et setters
+	public Agence(String nomAgence, Adresse adresse, ResponsableAgence responsableAgence, Set<Statistique> statistiques,
+			Set<Vehicule> vehicules, Set<Offre> offres, Set<Chauffeur> chauffeurs) {
+		this.nomAgence = nomAgence;
+		this.adresse = adresse;
+		this.responsableAgence = responsableAgence;
+		this.statistiques = statistiques;
+		this.vehicules = vehicules;
+		this.offres = offres;
+		this.chauffeurs = chauffeurs;
+	}
+
+	// Getters et setters
 	public Long getIdAgence() {
 		return idAgence;
 	}
@@ -70,7 +89,6 @@ public class Agence implements Serializable{
 		this.nomAgence = nomAgence;
 	}
 
-	
 	public Adresse getAdresse() {
 		return adresse;
 	}
@@ -111,11 +129,18 @@ public class Agence implements Serializable{
 		this.offres = offres;
 	}
 
+	public Set<Chauffeur> getChauffeurs() {
+		return chauffeurs;
+	}
+
+	public void setChauffeurs(Set<Chauffeur> chauffeurs) {
+		this.chauffeurs = chauffeurs;
+	}
+
 	// Methode toString
 	@Override
 	public String toString() {
 		return "Agence [idAgence=" + idAgence + ", nomAgence=" + nomAgence + "]";
 	}
-	
-	
+
 }

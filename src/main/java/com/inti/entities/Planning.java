@@ -49,6 +49,12 @@ public class Planning implements Serializable{
 	public void setDatePlanning(Date datePlanning) {
 		this.datePlanning = datePlanning;
 	}
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
 	@Override
 	public String toString() {
 		return "Planning [idPlanning=" + idPlanning + ", datePlanning=" + datePlanning + "]";

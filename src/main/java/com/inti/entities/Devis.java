@@ -21,7 +21,7 @@ public class Devis implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dateDevis;
 	@OneToOne
-	@JoinColumn(name = "id_reservation")
+	@JoinColumn(name="id_reservation")
 	private Reservation reservation;
 
 	public Devis() {

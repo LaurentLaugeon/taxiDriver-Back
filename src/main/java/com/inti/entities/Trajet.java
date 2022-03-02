@@ -3,6 +3,7 @@ package com.inti.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,6 @@ import javax.persistence.TemporalType;
 import com.inti.model.Adresse;
 import com.inti.model.Adresse2;
 
-
 @Entity
 public class Trajet implements Serializable {
 	@Id
@@ -22,16 +22,17 @@ public class Trajet implements Serializable {
 	private Adresse adresseDep;
 	private Adresse2 adresseArr;
 	private double distance;
-	private float duree;
+	private double duree;
 	@Temporal(TemporalType.DATE)
 	private Date dateDep;
 	@Temporal(TemporalType.DATE)
 	private Date dateArr;
-	
+
 	public Trajet() {
 	}
 
-	public Trajet(Adresse adresseDep, Adresse2 adresseArr, double distance, float duree, Date dateDep, Date dateArr) {
+	public Trajet(Adresse adresseDep, Adresse2 adresseArr, double distance, double duree, Date dateDep, Date dateArr) {
+		super();
 		this.adresseDep = adresseDep;
 		this.adresseArr = adresseArr;
 		this.distance = distance;
@@ -62,6 +63,7 @@ public class Trajet implements Serializable {
 
 	public void setAdresseArr(Adresse2 adresseArr) {
 		this.adresseArr = adresseArr;
+
 	}
 
 	public double getDistance() {
@@ -72,11 +74,11 @@ public class Trajet implements Serializable {
 		this.distance = distance;
 	}
 
-	public float getDuree() {
+	public double getDuree() {
 		return duree;
 	}
 
-	public void setDuree(float duree) {
+	public void setDuree(double duree) {
 		this.duree = duree;
 	}
 

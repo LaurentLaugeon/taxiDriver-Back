@@ -18,12 +18,10 @@ public class ResponsableAgence extends Utilisateur implements Serializable {
 	private Agence agence;
 
 	public ResponsableAgence() {
-		super();
 	}
 
-	public ResponsableAgence(String nom, String prenom, String username, String password, String email, Adresse adresse,
-			Set<Role> roles) {
-		super(nom, prenom, username, password, email, adresse, roles);
+	public ResponsableAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 	public Agence getAgence() {
