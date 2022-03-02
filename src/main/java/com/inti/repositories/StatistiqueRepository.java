@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-
+import com.inti.entities.Agence;
 import com.inti.entities.Chauffeur;
 import com.inti.entities.Statistique;
 import com.inti.entities.Vehicule;
@@ -27,4 +27,6 @@ public interface StatistiqueRepository extends JpaRepository<Statistique, Long>{
 			+ "MAX(SUM(prix_tot WHERE facture.id_reservation = reservation.id_resa "
 			+ "AND reservation.id_chauffeur = chauffeur.id_utilisateur ) FROM facture) ", nativeQuery=true)
 	Chauffeur chauffeurGagnePlus();
+	
+	public List<Statistique> findByAgence(Agence agence);
 }

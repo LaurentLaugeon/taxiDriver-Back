@@ -52,12 +52,12 @@ public class ChauffeurController {
 		return planningService.findByDateAndChauffeur(datePlanning,currentChauffeur);
 	}
 	
-	@GetMapping("chauffeur/avisClient/{idChauffeur}")
-	public AvisClient affichageAvisClient(@PathVariable("idChauffeur") Long idChauffeur) {
-		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
-		
-		
-		return avisClientService.findByChauffeur(idChauffeur);
-	}
+//	@GetMapping("chauffeur/avisClient/{idChauffeur}")
+//	public AvisClient affichageAvisClient(@PathVariable("idChauffeur") Long idChauffeur) {
+//		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
+//		
+//		
+//		return avisClientService.findByChauffeur(idChauffeur);
+//	}
 
 }
