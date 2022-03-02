@@ -88,7 +88,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Editer un chauffeur de son agence (seulement modification de la voiture)
-	@PutMapping("respoAgence/{idChauffeur}")
+	@PutMapping("respoAgence/chauffeurs/{idChauffeur}")
 	public Chauffeur updateChauffeurRespo(@PathVariable("idChauffeur") Long idChauffeur,
 			@RequestBody Chauffeur chauffeur) {
 		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
@@ -97,7 +97,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Supprimer un chauffeur de son agence
-	@DeleteMapping("respoAgence/{idChauffeur}")
+	@DeleteMapping("respoAgence/chauffeurs/{idChauffeur}")
 	public void deleteChauffeurRespo(@PathVariable("idChauffeur") Long idChauffeur) {
 		chauffeurService.delete(idChauffeur);
 	}
@@ -119,7 +119,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Editer un vehicule de son agence
-	@PutMapping("respoAgence/{idVehicule}")
+	@PutMapping("respoAgence/vehicules/{idVehicule}")
 	public Vehicule updateVehiculeRespo(@PathVariable("idVehicule") Long idVehicule, @RequestBody Vehicule vehicule) {
 		Vehicule currentVehicule = vehiculeService.findOne(idVehicule);
 		currentVehicule.setModel(vehicule.getModel());
@@ -133,7 +133,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Supprimer un vehicule de son agence
-	@DeleteMapping("respoAgence/{idVehicule}")
+	@DeleteMapping("respoAgence/vehicules/{idVehicule}")
 	public void deleteVehiculeRespo(@PathVariable("idVehicule") Long idVehicule) {
 		vehiculeService.delete(idVehicule);
 	}
@@ -141,16 +141,15 @@ public class ResponsableAgenceController {
 	// Gestion des reclamations
 
 	// Afficher les reclamations de son agence
-	@GetMapping("respoAgence/reclamations/{id}")
-	public List<Reclamation> afficherReclamationsByAgence(@PathVariable("id") Long idRespoAgence) {
+	@GetMapping("respoAgence/reclamations/{idRespoAgence}")
+	public List<Reclamation> afficherReclamationsByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
 		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
-		System.out.println(currentRespoAgence.getNom());
 		Agence currentAgence = currentRespoAgence.getAgence();
 		return reclamationService.findByAgence(currentAgence);
 	}
 
 	// Editer une reclamation de son agence
-	@PutMapping("respoAgence/{idReclamation}")
+	@PutMapping("respoAgence/reclamations/{idReclamation}")
 	public Reclamation updateReclamationRespo(@PathVariable("idReclamation") Long idReclamation,
 			@RequestBody Reclamation reclamation) {
 		Reclamation currentReclamation = reclamationService.findOne(idReclamation);
@@ -159,7 +158,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Supprimer un reclamation de son agence
-	@DeleteMapping("respoAgence/{idReclamation}")
+	@DeleteMapping("respoAgence/reclamations/{idReclamation}")
 	public void deleteReclamationRespo(@PathVariable("idReclamation") Long idReclamation) {
 		reclamationService.delete(idReclamation);
 	}
@@ -181,7 +180,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Editer une offre de son agence
-	@PutMapping("respoAgence/{idOffre}")
+	@PutMapping("respoAgence/offres/{idOffre}")
 	public Offre updateOffreRespo(@PathVariable("idOffre") Long idOffre, @RequestBody Offre offre) {
 		Offre currentOffre = offreService.findOne(idOffre);
 		currentOffre.setNbVoyFree(offre.getNbVoyFree());
@@ -189,7 +188,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Supprimer un offre de son agence
-	@DeleteMapping("respoAgence/{idOffre}")
+	@DeleteMapping("respoAgence/offres/{idOffre}")
 	public void deleteOffreRespo(@PathVariable("idOffre") Long idOffre) {
 		offreService.delete(idOffre);
 	}
@@ -214,7 +213,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Ajouter une facture de son agence
-	@PutMapping("respoAgence/facture/{idReservation}")
+	@PutMapping("respoAgence/factures/{idReservation}")
 	public Reservation updateFactureRespo(@PathVariable("idReservation") Long idReservation,
 			@RequestBody Reservation reservation) {
 		Reservation currentReservation = reservationService.findOne(idReservation);
@@ -223,7 +222,7 @@ public class ResponsableAgenceController {
 	}
 
 	// Supprimer un Reservation de son agence
-	@DeleteMapping("respoAgence/{idReservation}")
+	@DeleteMapping("respoAgence/reservations/{idReservation}")
 	public void deleteReservationRespo(@PathVariable("idReservation") Long idReservation) {
 		reservationService.delete(idReservation);
 	}
