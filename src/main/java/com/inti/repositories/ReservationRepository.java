@@ -11,8 +11,8 @@ import com.inti.entities.Reservation;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long>{
-	@Query(value="SELECT r FROM Reservation r "
-			+ "INNER JOIN Chauffeur c WHERE r.chauffeur = c AND c.agence=?", nativeQuery = true)
-	List<Reservation> findByAgence(Agence agence);
+	@Query(value="SELECT reservation.* FROM reservation\r\n"
+			+ "JOIN utilisateur WHERE utilisateur.id_utilisateur = reservation.id_chauffeur AND utilisateur.id_agence = ?", nativeQuery = true)
+	List<Reservation> findByAgence(Long idagence);
 
 }
