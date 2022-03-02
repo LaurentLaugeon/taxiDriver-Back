@@ -12,33 +12,39 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inti.model.Adresse;
 
 @Entity
-public class Agence implements Serializable{
+public class Agence implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idAgence; 
-	private String nomAgence; 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idAgence;
+	private String nomAgence;
 	@Embedded
 	private Adresse adresse;
-	
+
 	@OneToOne(mappedBy = "agence")
-	private ResponsableAgence responsableAgence; 
-	
-	@OneToMany(mappedBy="agence")
+	@JsonIgnore
+	private ResponsableAgence responsableAgence;
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private Set<Statistique> statistiques = new HashSet<>();
-	
-	@OneToMany(mappedBy="agence")
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private Set<Vehicule> vehicules = new HashSet<>();
-	
-	@OneToMany(mappedBy="agence")
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private Set<Offre> offres = new HashSet<>();
-	
-	@OneToMany(mappedBy="agence")
+
+	@OneToMany(mappedBy = "agence")
+	@JsonIgnore
 	private Set<Chauffeur> chauffeurs = new HashSet<>();
-	
-	//Constructeurs
+
+	// Constructeurs
 	public Agence() {
 	}
 
@@ -66,7 +72,7 @@ public class Agence implements Serializable{
 		this.chauffeurs = chauffeurs;
 	}
 
-	//Getters et setters
+	// Getters et setters
 	public Long getIdAgence() {
 		return idAgence;
 	}
@@ -83,7 +89,6 @@ public class Agence implements Serializable{
 		this.nomAgence = nomAgence;
 	}
 
-	
 	public Adresse getAdresse() {
 		return adresse;
 	}
@@ -137,6 +142,5 @@ public class Agence implements Serializable{
 	public String toString() {
 		return "Agence [idAgence=" + idAgence + ", nomAgence=" + nomAgence + "]";
 	}
-	
-	
+
 }

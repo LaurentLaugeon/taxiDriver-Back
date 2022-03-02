@@ -20,7 +20,7 @@ public class Devis implements Serializable {
 	private double prixTot;
 	@Temporal(TemporalType.DATE)
 	private Date dateDevis;
-	
+
 	@OneToOne
 	@JoinColumn(name="id_reservation")
 	private Reservation reservation;

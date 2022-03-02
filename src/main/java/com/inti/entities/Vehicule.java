@@ -23,8 +23,7 @@ public class Vehicule implements Serializable{
 	private int nbPlace; 
 	private double capaciteCoffre;
 	
-	@JsonIgnore
-	@OneToOne
+	@OneToOne(mappedBy="vehicule")
 	private Chauffeur chauffeur; 
 	
 	@ManyToOne

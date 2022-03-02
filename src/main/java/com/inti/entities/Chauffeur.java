@@ -1,35 +1,39 @@
 package com.inti.entities;
 
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @DiscriminatorValue("chauffeur")
-public class Chauffeur extends Utilisateur implements Serializable{
+public class Chauffeur extends Utilisateur implements Serializable {
 	private double note;
-	
+
 	@OneToMany(mappedBy = "chauffeur")
+	@JsonIgnore
 	private Set<Planning> plannings = new HashSet<>();
-	
+
 	@OneToOne
 	@JoinColumn(name = "id_vehicule")
+	@JsonIgnore
 	private Vehicule vehicule;
-	
+
 	@OneToMany(mappedBy = "chauffeur")
+	@JsonIgnore
 	private Set<Reservation> reservations = new HashSet<>();
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_agence")
+	@JoinColumn(name = "id_agence")
+	@JsonIgnore
 	private Agence agence;
 
 	public Chauffeur() {
@@ -97,5 +101,11 @@ public class Chauffeur extends Utilisateur implements Serializable{
 	public void setAgence(Agence agence) {
 		this.agence = agence;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Chauffeur [note=" + note + ", plannings=" + plannings + ", vehicule=" + vehicule + ", reservations="
+				+ reservations + ", agence=" + agence + "]";
+	}
+
 }

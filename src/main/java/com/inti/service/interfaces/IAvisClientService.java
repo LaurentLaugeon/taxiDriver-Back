@@ -12,4 +12,5 @@ public interface IAvisClientService {
 	AvisClient save(AvisClient avisClient);
 
 	void delete(Long idAvisClient);
+	
 }

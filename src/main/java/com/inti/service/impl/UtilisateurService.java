@@ -18,7 +18,10 @@ public class UtilisateurService implements IUtilisateurService{
 	public List<Utilisateur> findAll() {
 		return utilisateurRepository.findAll();
 	}
-
+	@Override
+	public Utilisateur findByUsername(String username) {
+		return utilisateurRepository.findByUsername(username);
+	}
 	@Override
 	public Utilisateur findOne(Long idUtilisateur) {
 		return utilisateurRepository.findById(idUtilisateur).get();
@@ -33,5 +36,6 @@ public class UtilisateurService implements IUtilisateurService{
 	public void delete(Long idUtilisateur) {
 		utilisateurRepository.deleteById(idUtilisateur);
 	}
+
 
 }

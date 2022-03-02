@@ -18,7 +18,7 @@ public class Planning implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idPlanning;
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.DATE)
 	private Date datePlanning;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -48,6 +48,12 @@ public class Planning implements Serializable{
 	}
 	public void setDatePlanning(Date datePlanning) {
 		this.datePlanning = datePlanning;
+	}
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
 	}
 	@Override
 	public String toString() {
