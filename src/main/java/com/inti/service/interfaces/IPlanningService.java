@@ -15,6 +15,6 @@ public interface IPlanningService {
 
 	void delete(Long idPlanning);
 		
-	Planning findByDateAndChauffeur(Date datePlanning, Chauffeur chauffeur);
+	Planning findByDateAndChauffeur(Long idPlanning, Long idChauffeur);
 
 }

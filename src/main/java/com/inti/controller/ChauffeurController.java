@@ -1,8 +1,6 @@
 package com.inti.controller;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,10 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inti.entities.AvisClient;
 import com.inti.entities.Chauffeur;
 import com.inti.entities.Planning;
-import com.inti.entities.Reservation;
 import com.inti.service.interfaces.IAvisClientService;
 import com.inti.service.interfaces.IChauffeurService;
 import com.inti.service.interfaces.IPlanningService;
@@ -37,7 +33,6 @@ public class ChauffeurController {
 
 	@GetMapping("chauffeur")
 	public List<Chauffeur> affichage() {
-		System.out.println("ALLLLLLLLEZ!!!!!");
 		return chauffeurService.findAll();
 	}
 	
@@ -46,11 +41,14 @@ public class ChauffeurController {
 		return chauffeurService.findOne(idChauffeur);
 	}
 	
-	@GetMapping("chauffeur/planning/{idChauffeur}/{jour}")
-	public Planning affichagePlanning(@PathVariable("idChauffeur") Long idChauffeur, @PathVariable("jour") Date datePlanning) {
-		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
-		return planningService.findByDateAndChauffeur(datePlanning,currentChauffeur);
+	@GetMapping("chauffeur/planning/{idChauffeur}/{idPlanning}")
+	public Planning affichagePlanning(@PathVariable("idChauffeur") Long idChauffeur, @PathVariable("idPlanning") Long idPlanning) {
+//		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
+//		Planning currentPlanning = planningService.findOne(idPlanning);
+		return planningService.findByDateAndChauffeur(idPlanning,idChauffeur);
 	}
+	
+	
 	
 //	@GetMapping("chauffeur/avisClient/{idChauffeur}")
 //	public AvisClient affichageAvisClient(@PathVariable("idChauffeur") Long idChauffeur) {

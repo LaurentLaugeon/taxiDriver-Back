@@ -69,8 +69,15 @@ public class ResponsableAgenceController {
 	// Afficher les chauffeurs de son agence
 	@GetMapping("/respoAgence/chauffeurs/{idRespoAgence}")
 	public List<Chauffeur> afficherChauffeursByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
+		System.out.println("responsable="+idRespoAgence);
 		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
+		System.out.println("current respo agence" + currentRespoAgence);
 		Agence currentAgence = currentRespoAgence.getAgence();
+		System.out.println("current agence " + currentAgence);
+		List<Chauffeur> chauffeurs = chauffeurService.findByAgence(currentAgence);
+		for (Chauffeur chauffeur : chauffeurs) {
+			System.out.println("chaufeur"+chauffeur.toString());
+		}
 		return chauffeurService.findByAgence(currentAgence);
 	}
 
@@ -121,7 +128,7 @@ public class ResponsableAgenceController {
 		currentVehicule.setNbPlace(vehicule.getNbPlace());
 		currentVehicule.setCapaciteCoffre(vehicule.getCapaciteCoffre());
 		currentVehicule.setAgence(vehicule.getAgence());
-		currentVehicule.setChauffeur(vehicule.getChauffeur());
+		//currentVehicule.setChauffeur(vehicule.getChauffeur());
 		return vehiculeService.save(currentVehicule);
 	}
 

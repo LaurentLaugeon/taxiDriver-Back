@@ -3,11 +3,13 @@ package com.inti.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
+@DiscriminatorValue("respo")
 public class ResponsableAgence extends Utilisateur implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "id_agence")

@@ -52,7 +52,6 @@ public class Reservation implements Serializable {
 	private AvisClient avisClient;
 
 	@OneToMany(mappedBy = "reservation")
-	@JsonIgnore
 	List<Reclamation> reclamations = new ArrayList<>();
 
 	@ManyToOne

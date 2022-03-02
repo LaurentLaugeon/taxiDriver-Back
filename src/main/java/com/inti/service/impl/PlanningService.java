@@ -41,8 +41,8 @@ public class PlanningService implements IPlanningService{
 		planningRepository.deleteById(idPlanning);
 	}
 	
-	public Planning findByDateAndChauffeur(Date datePlanning, Chauffeur chauffeur) {
-		return planningRepository.findByDateAndChauffeur(datePlanning, chauffeur);
+	public Planning findByDateAndChauffeur(Long idPlanning, Long idChauffeur) {
+		return planningRepository.findByDateAndChauffeur(idPlanning, idChauffeur);
 	};
 
 }
