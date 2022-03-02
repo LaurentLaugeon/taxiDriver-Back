@@ -16,12 +16,13 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inti.model.Adresse;
 
 import javax.persistence.JoinColumn;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Utilisateur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +36,7 @@ public class Utilisateur implements Serializable {
 	@Embedded
 	private Adresse adresse;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "profil", 
 	joinColumns = @JoinColumn(name="id_utilisateur", referencedColumnName="idUtilisateur"),
