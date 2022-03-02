@@ -37,6 +37,6 @@ public class ReclamationService implements IReclamationService{
 
 	@Override
 	public List<Reclamation> findByAgence(Agence agence) {
-		return reclamationRepository.findByAgence(agence);
+		return reclamationRepository.findByAgence(agence.getIdAgence());
 	}
 }

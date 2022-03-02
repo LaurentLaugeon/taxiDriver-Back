@@ -37,6 +37,6 @@ public class ReservationService implements IReservationService{
 
 	@Override
 	public List<Reservation> findByAgence(Agence agence) {
-		return reservationRepository.findByAgence(agence);
+		return reservationRepository.findByAgence(agence.getIdAgence());
 	}
 }
