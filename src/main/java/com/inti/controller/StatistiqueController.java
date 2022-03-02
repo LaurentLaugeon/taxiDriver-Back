@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Administrateur;
 import com.inti.entities.Chauffeur;
+import com.inti.entities.Vehicule;
 import com.inti.service.interfaces.IStatistiqueService;
 
 @RestController
@@ -18,9 +19,14 @@ public class StatistiqueController {
 	@Autowired
 	IStatistiqueService statistiqueService;
 	
-	@GetMapping("statistique/chauffeurBest") 
-	public Chauffeur chauffeurBest(){
-		return statistiqueService.chauffeurGagnePlus();
+	@GetMapping("statistique/chauffeurBest")
+	public List<Chauffeur> chauffeursOrderBy(){
+		return statistiqueService.chauffeursOrderBy();
+	}
+	
+	@GetMapping("statistique/vehiculeConsoPlus")
+	public Vehicule vehiculeConsoPlus() {
+		return statistiqueService.vehiculeConsoPlus();
 	}
 	
 }

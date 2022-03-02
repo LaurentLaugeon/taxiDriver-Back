@@ -14,6 +14,7 @@ public class Offre implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idOffre; 
+	private String libelle;
 	private int nbVoyFree;
 	
 	@ManyToOne
@@ -23,6 +24,13 @@ public class Offre implements Serializable{
 	
 	// Constructeur 
 	public Offre() {
+	}
+
+	public Offre(String libelle, int nbVoyFree, Agence agence) {
+		super();
+		this.libelle = libelle;
+		this.nbVoyFree = nbVoyFree;
+		this.agence = agence;
 	}
 
 	public Offre(int nbVoyFree) {
@@ -37,8 +45,17 @@ public class Offre implements Serializable{
 	}
 
 	// Getters et setters
+	
 	public Long getIdOffre() {
 		return idOffre;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
 	public void setIdOffre(Long idOffre) {
@@ -64,10 +81,9 @@ public class Offre implements Serializable{
 	// Methode toString 
 	@Override
 	public String toString() {
-		return "Offre [idOffre=" + idOffre + ", nbVoyFree=" + nbVoyFree + "]";
-	} 
-	
-	
+		return "Offre [idOffre=" + idOffre + ", libelle=" + libelle + ", nbVoyFree=" + nbVoyFree + ", agence=" + agence
+				+ "]";
+	}
 	
 	
 }

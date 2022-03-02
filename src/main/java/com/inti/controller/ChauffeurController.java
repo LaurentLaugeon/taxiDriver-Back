@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inti.entities.AvisClient;
 import com.inti.entities.Chauffeur;
 import com.inti.entities.Planning;
 import com.inti.service.interfaces.IAvisClientService;
@@ -31,16 +32,19 @@ public class ChauffeurController {
 	@Autowired
 	IReservationService reservationService;
 
+	// Affiche tous les chauffeurs
 	@GetMapping("chauffeur")
 	public List<Chauffeur> affichage() {
 		return chauffeurService.findAll();
 	}
 	
+	// Affiche un chauffeur
 	@GetMapping("chauffeur/{id}")
 	public Chauffeur affichageNote(@PathVariable("id") Long idChauffeur) {
 		return chauffeurService.findOne(idChauffeur);
 	}
 	
+	// Affiche le planning d'un jour pour un chauffeur
 	@GetMapping("chauffeur/planning/{idChauffeur}/{idPlanning}")
 	public Planning affichagePlanning(@PathVariable("idChauffeur") Long idChauffeur, @PathVariable("idPlanning") Long idPlanning) {
 //		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
@@ -49,13 +53,10 @@ public class ChauffeurController {
 	}
 	
 	
-	
-//	@GetMapping("chauffeur/avisClient/{idChauffeur}")
-//	public AvisClient affichageAvisClient(@PathVariable("idChauffeur") Long idChauffeur) {
-//		Chauffeur currentChauffeur = chauffeurService.findOne(idChauffeur);
-//		
-//		
-//		return avisClientService.findByChauffeur(idChauffeur);
-//	}
+	// Affichge la liste des avis des clients pour un chauffeur donné
+	@GetMapping("chauffeur/avisClient/{idChauffeur}")
+	public List<AvisClient> affichageAvisClient(@PathVariable("idChauffeur") Long idChauffeur) {
+		return avisClientService.findByChauffeur(idChauffeur);
+	}
 
 }
