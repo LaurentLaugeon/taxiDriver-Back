@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +24,8 @@ import com.inti.model.Adresse;
 import javax.persistence.JoinColumn;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Utilisateur implements Serializable {
 
 	@Id
@@ -36,16 +39,12 @@ public abstract class Utilisateur implements Serializable {
 	private String email;
 	@Embedded
 	private Adresse adresse;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "profil", 
-	joinColumns = @JoinColumn(name="id_utilisateur", referencedColumnName="IdUtilisateur"),
+	@JoinTable(name = "profil", joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "IdUtilisateur"),
 
-	inverseJoinColumns = @JoinColumn(name="id_role", referencedColumnName="idRole"))
-	@JsonIgnore
+			inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
-
-	
 
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
@@ -112,5 +111,4 @@ public abstract class Utilisateur implements Serializable {
 		this.adresse = adresse;
 	}
 
-	
 }

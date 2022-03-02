@@ -12,8 +12,8 @@ import com.inti.entities.Planning;
 
 @Repository
 public interface PlanningRepository extends JpaRepository<Planning, Long>{
-	@Query(value="SELECT * FROM Planning p WHERE p.datePlanning = ? AND "
-			+ "p.chauffeur=?",nativeQuery=true)
-	Planning findByDateAndChauffeur(Date datePlanning, Chauffeur chauffeur);
+	@Query(value="SELECT * FROM Planning p WHERE p.id_planning = ? AND "
+			+ "p.id_chauffeur=?",nativeQuery=true)
+	Planning findByDateAndChauffeur(Long idPlanning, Long idChauffeur);
 	
 }
