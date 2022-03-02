@@ -8,12 +8,16 @@ import org.springframework.stereotype.Service;
 import com.inti.entities.Agence;
 import com.inti.entities.Chauffeur;
 import com.inti.repositories.ChauffeurRepository;
+import com.inti.repositories.StatistiqueRepository;
 import com.inti.service.interfaces.IChauffeurService;
 
 @Service
 public class ChauffeurService implements IChauffeurService{
 	@Autowired
 	ChauffeurRepository chauffeurRepository;
+	
+	@Autowired
+	StatistiqueRepository statistiqueRepository;
 	
 	@Override
 	public List<Chauffeur> findAll() {
@@ -39,4 +43,14 @@ public class ChauffeurService implements IChauffeurService{
 	public List<Chauffeur> findByAgence(Agence agence) {
 		return chauffeurRepository.findByAgence(agence);
 	}
+	
+	@Override
+	public List<Chauffeur> chauffeursOrderBy(String type) {
+		return chauffeurRepository.chauffeursOrderBy(type);
+	}
+	
+	/*@Override
+	public Chauffeur chauffeurGagnePlus() {
+		return chauffeurRepository.chauffeurGagnePlus();
+	}*/
 }

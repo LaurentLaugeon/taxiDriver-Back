@@ -16,12 +16,6 @@ public interface IStatistiqueService {
 	Statistique save(Statistique stats);
 
 	void delete(Long idStatistique);
-	
-	List<Chauffeur> chauffeursOrderBy();
-	
-	Vehicule vehiculeConsoPlus();
-	
-	Chauffeur chauffeurGagnePlus();
 
 	List<Statistique> findByAgence(Agence agence);
 
