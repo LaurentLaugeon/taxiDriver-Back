@@ -104,7 +104,7 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Chauffeur [note=" + note + ", plannings=" + plannings + ", vehicule=" + vehicule + ", reservations="
+		return super.toString()+ "Chauffeur [note=" + note + ", plannings=" + plannings + ", vehicule=" + vehicule + ", reservations="
 				+ reservations + ", agence=" + agence + "]";
 	}
 

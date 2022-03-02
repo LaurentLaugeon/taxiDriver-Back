@@ -14,5 +14,8 @@ public interface IVehiculeService {
 
 	void delete(Long idVehicule);
 	
+	Vehicule vehiculeConsoPlus();
+	
+	
 	List<Vehicule> findByAgence(Agence agence);
 }	

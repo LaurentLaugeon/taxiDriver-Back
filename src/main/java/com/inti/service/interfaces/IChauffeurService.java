@@ -15,4 +15,8 @@ public interface IChauffeurService {
 	void delete(Long idChauffeur);
 	
 	List<Chauffeur> findByAgence(Agence agence);
+	
+	List<Chauffeur> chauffeursOrderBy(String type);
+	
+	//Chauffeur chauffeurGagnePlus();
 }
