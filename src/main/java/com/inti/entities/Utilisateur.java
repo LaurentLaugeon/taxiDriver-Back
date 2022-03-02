@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +23,8 @@ import com.inti.model.Adresse;
 import javax.persistence.JoinColumn;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Utilisateur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +41,20 @@ public abstract class Utilisateur implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "profil", joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
+
+	public Utilisateur() {
+	}
+
+	public Utilisateur(String nom, String prenom, String username, String password, String email, Adresse adresse,
+			Set<Role> roles) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.adresse = adresse;
+		this.roles = roles;
+	}
 
 	public Long getidUtilisateur() {
 		return idUtilisateur;

@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import com.inti.model.Adresse;
+
 @Entity
+@DiscriminatorValue("client")
 public class Client extends Utilisateur implements Serializable {
 	private int pointsFidelite;
 
@@ -19,15 +23,9 @@ public class Client extends Utilisateur implements Serializable {
 		super();
 	}
 
-	public Client(int pointsFidelite) {
-		super();
-		this.pointsFidelite = pointsFidelite;
-	}
-
-	public Client(int pointsFidelite, Set<Reservation> reservations) {
-		super();
-		this.pointsFidelite = pointsFidelite;
-		this.reservations = reservations;
+	public Client(String nom, String prenom, String username, String password, String email, Adresse adresse,
+			Set<Role> roles) {
+		super(nom, prenom, username, password, email, adresse, roles);
 	}
 
 	public int getPointsFidelite() {

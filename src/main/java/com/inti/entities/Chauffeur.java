@@ -1,30 +1,39 @@
 package com.inti.entities;
 
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.inti.model.Adresse;
+
 @Entity
-public class Chauffeur extends Utilisateur implements Serializable{
+@DiscriminatorValue("chauffeur")
+public class Chauffeur extends Utilisateur implements Serializable {
 	private double note;
-	
+
 	@OneToMany(mappedBy = "chauffeur")
 	private Set<Planning> plannings = new HashSet<>();
-	
+
 	@OneToOne
 	@JoinColumn(name = "id_vehicule")
 	private Vehicule vehicule;
-	
+
 	@OneToMany(mappedBy = "chauffeur")
 	private Set<Reservation> reservations = new HashSet<>();
 
 	public Chauffeur() {
+		super();
+	}
+
+	public Chauffeur(String nom, String prenom, String username, String password, String email, Adresse adresse,
+			Set<Role> roles) {
+		super(nom, prenom, username, password, email, adresse, roles);
 	}
 
 	public Chauffeur(double note) {
@@ -75,5 +84,5 @@ public class Chauffeur extends Utilisateur implements Serializable{
 	public void setReservations(Set<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-	
+
 }

@@ -1,23 +1,29 @@
 package com.inti.entities;
 
-
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.inti.model.Adresse;
+
 @Entity
-public class ResponsableAgence extends Utilisateur implements Serializable{
+@DiscriminatorValue("respo")
+public class ResponsableAgence extends Utilisateur implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "id_agence")
 	private Agence agence;
 
 	public ResponsableAgence() {
+		super();
 	}
 
-	public ResponsableAgence(Agence agence) {
-		this.agence = agence;
+	public ResponsableAgence(String nom, String prenom, String username, String password, String email, Adresse adresse,
+			Set<Role> roles) {
+		super(nom, prenom, username, password, email, adresse, roles);
 	}
 
 	public Agence getAgence() {
@@ -32,5 +38,5 @@ public class ResponsableAgence extends Utilisateur implements Serializable{
 	public String toString() {
 		return "ResponsableAgence [agence=" + agence + "]";
 	}
-	
+
 }

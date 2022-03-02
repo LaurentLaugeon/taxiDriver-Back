@@ -64,6 +64,7 @@ public class ClientController {
 	//affiche tous les clients (test)
 	@GetMapping("client/tous")
 	public List<Client> findAllClients() {
+		System.out.println("client tous : ");
 		return clientService.findAll();
 	}
 
