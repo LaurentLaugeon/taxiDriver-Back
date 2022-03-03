@@ -74,11 +74,13 @@ public class ResponsableAgenceController {
 		System.out.println("current respo agence" + currentRespoAgence);
 		Agence currentAgence = currentRespoAgence.getAgence();
 		System.out.println("current agence " + currentAgence);
-		List<Chauffeur> chauffeurs = chauffeurService.findByAgence(currentAgence);
+		List<Chauffeur> chauffeurs = chauffeurService.findAll();
 		for (Chauffeur chauffeur : chauffeurs) {
-			System.out.println("chaufeur"+chauffeur.toString());
+			if (chauffeur.getAgence() != currentAgence) {
+				chauffeurs.remove(chauffeur);
+			}
 		}
-		return chauffeurService.findByAgence(currentAgence);
+		return chauffeurs;
 	}
 
 	// Ajouter un chauffeur à son agence

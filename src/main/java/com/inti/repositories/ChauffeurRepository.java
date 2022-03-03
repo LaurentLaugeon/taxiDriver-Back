@@ -11,7 +11,10 @@ import com.inti.entities.Chauffeur;
 
 @Repository
 public interface ChauffeurRepository extends JpaRepository<Chauffeur, Long>{
-	public List<Chauffeur> findByAgence(Agence agence);
+	//retourner la liste des chauffeurs par agence
+	//@Query(value="SELECT * from utilisateur WHERE type = 'chauffeur' AND id_agence = ?", nativeQuery=true)
+	public List<Chauffeur> findAllByAgence(Agence agence);
+		
 	
 	// Faire la liste des Chauffeurs du mieux noté au moins bien noté 
 		@Query(value="SELECT * from utilisateur WHERE type=? ORDER BY note DESC", nativeQuery=true)
