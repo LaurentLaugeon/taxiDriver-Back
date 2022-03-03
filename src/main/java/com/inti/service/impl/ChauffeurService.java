@@ -41,7 +41,7 @@ public class ChauffeurService implements IChauffeurService{
 
 	@Override
 	public List<Chauffeur> findByAgence(Agence agence) {
-		return chauffeurRepository.findByAgence(agence);
+		return chauffeurRepository.findAllByAgence(agence);
 	}
 	
 	@Override

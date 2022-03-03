@@ -10,12 +10,12 @@ import com.inti.entities.Agence;
 import com.inti.entities.Vehicule;
 
 @Repository
-public interface VehiculeRepository extends JpaRepository<Vehicule, Long>{
-	 public List<Vehicule> findByAgence(Agence agence);
+public interface VehiculeRepository extends JpaRepository<Vehicule, Long> {
+	//retourne les voitures par agence
+	public List<Vehicule> findByAgence(Agence agence);
 
-		// Voiture qui consomme le plus 
-		@Query(value="SELECT MAX(conso) FROM vehicule", nativeQuery=true)
-		public Vehicule vehiculeConsoPlus();
-		
-		
+	// Voiture qui consomme le plus
+	@Query(value = "SELECT MAX(conso) FROM vehicule", nativeQuery = true)
+	public Vehicule vehiculeConsoPlus();
+
 }

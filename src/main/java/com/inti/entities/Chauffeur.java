@@ -33,7 +33,6 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_agence")
-	@JsonIgnore
 	private Agence agence;
 
 	public Chauffeur() {
