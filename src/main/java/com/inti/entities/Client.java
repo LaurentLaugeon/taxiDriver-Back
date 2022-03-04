@@ -33,7 +33,7 @@ public class Client extends Utilisateur implements Serializable {
 		return pointsFidelite;
 	}
 
-	public void SetPointsFidelite(int pointsFidelite) {
+	public void setPointsFidelite(int pointsFidelite) {
 		this.pointsFidelite = pointsFidelite;
 	}
 
@@ -41,7 +41,7 @@ public class Client extends Utilisateur implements Serializable {
 		return reservations;
 	}
 
-	public void SetReservations(Set<Reservation> reservations) {
+	public void setReservations(Set<Reservation> reservations) {
 		this.reservations = reservations;
 	}
 

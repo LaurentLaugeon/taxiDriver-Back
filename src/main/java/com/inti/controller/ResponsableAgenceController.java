@@ -75,11 +75,8 @@ public class ResponsableAgenceController {
 	// Afficher les chauffeurs de son agence
 	@GetMapping("/respoAgence/chauffeurs/{idRespoAgence}")
 	public List<Chauffeur> afficherChauffeursByAgence(@PathVariable("idRespoAgence") Long idRespoAgence) {
-		System.out.println("responsable="+idRespoAgence);
 		ResponsableAgence currentRespoAgence = responsableAgenceService.findOne(idRespoAgence);
-		System.out.println("current respo agence" + currentRespoAgence);
 		Agence currentAgence = currentRespoAgence.getAgence();
-		System.out.println("current agence " + currentAgence);
 		List<Chauffeur> chauffeurs = chauffeurService.findAll();
 		for (Chauffeur chauffeur : chauffeurs) {
 			if (chauffeur.getAgence() != currentAgence) {
