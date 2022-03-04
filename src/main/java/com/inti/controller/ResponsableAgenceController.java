@@ -63,6 +63,12 @@ public class ResponsableAgenceController {
 		Agence currentAgence = currentRespoAgence.getAgence();
 		return statistiqueService.findByAgence(currentAgence);
 	}
+	
+	//affichage des agences
+	@GetMapping("/respoAgence/agences")
+	public List<Agence> agenceRespoAgence() {
+		return agenceService.findAll();
+	}
 
 	// Gestion des chauffeurs
 
