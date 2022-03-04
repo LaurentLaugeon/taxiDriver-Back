@@ -29,7 +29,7 @@ public class ReservationController {
 	@Autowired
 	IClientService clientService;
 
-	@GetMapping("/client/reservations/{idClient}")
+	@GetMapping("client/reservations/{idClient}")
 	public List<Reservation> findByClient(@PathVariable("idClient") Long idClient) {
 		Client currentClient = clientService.findOne(idClient);
 		return reservationService.findByClient(currentClient);
