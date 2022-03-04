@@ -5,13 +5,13 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Adresse2 implements Serializable{
-    private String rueArr;
-    private String codePostalArr;
-    private String villeArr;
-    
-    public Adresse2() {
-    }
+public class Adresse2 implements Serializable {
+	private String rueArr;
+	private String codePostalArr;
+	private String villeArr;
+
+	public Adresse2() {
+	}
 
 	public Adresse2(String rueArr, String codePostalArr, String villeArr) {
 		this.rueArr = rueArr;
@@ -47,8 +47,5 @@ public class Adresse2 implements Serializable{
 	public String toString() {
 		return "Adresse2 [rueArr=" + rueArr + ", codePostalArr=" + codePostalArr + ", villeArr=" + villeArr + "]";
 	}
-    
-    
+
 }
-
-
