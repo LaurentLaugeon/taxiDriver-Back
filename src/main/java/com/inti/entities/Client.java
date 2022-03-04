@@ -6,29 +6,27 @@ import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import com.inti.model.Adresse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @DiscriminatorValue("client")
 public class Client extends Utilisateur implements Serializable {
 	private int pointsFidelite;
-	
+
 	@OneToMany(mappedBy = "client")
 	@JsonIgnore
 	private Set<Reservation> reservations = new HashSet<>();
 
 	public Client() {
+		super();
 	}
 
-	public Client(int pointsFidelite) {
-		this.pointsFidelite = pointsFidelite;
-	}
-
-	public Client(int pointsFidelite, Set<Reservation> reservations) {
-		this.pointsFidelite = pointsFidelite;
-		this.reservations = reservations;
+	public Client(String nom, String prenom, String username, String password, String email, Adresse adresse,
+			Set<Role> roles) {
 	}
 
 	public int getPointsFidelite() {
@@ -46,5 +44,5 @@ public class Client extends Utilisateur implements Serializable {
 	public void setReservations(Set<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-	
+
 }

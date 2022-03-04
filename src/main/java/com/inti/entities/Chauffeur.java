@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.inti.model.Adresse;
 
 @Entity
 @DiscriminatorValue("chauffeur")
@@ -24,7 +25,6 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name = "id_vehicule")
-	@JsonIgnore
 	private Vehicule vehicule;
 
 	@OneToMany(mappedBy = "chauffeur")

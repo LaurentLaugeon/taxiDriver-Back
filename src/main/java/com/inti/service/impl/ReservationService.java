@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inti.entities.Agence;
+import com.inti.entities.Client;
 import com.inti.entities.Reservation;
 import com.inti.repositories.ReservationRepository;
 import com.inti.service.interfaces.IReservationService;
@@ -39,4 +40,10 @@ public class ReservationService implements IReservationService{
 	public List<Reservation> findByAgence(Agence agence) {
 		return reservationRepository.findByAgence(agence.getIdAgence());
 	}
+
+	@Override
+	public List<Reservation> findByClient(Client client) {
+		return reservationRepository.findByClient(client);
+	}
+	
 }
