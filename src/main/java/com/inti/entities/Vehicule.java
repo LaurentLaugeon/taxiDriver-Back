@@ -2,6 +2,7 @@ package com.inti.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,8 @@ public class Vehicule implements Serializable{
 	private int nbPlace; 
 	private double capaciteCoffre;
 	
-	@OneToOne(mappedBy="vehicule")
+	@OneToOne(mappedBy="vehicule",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Chauffeur chauffeur; 
 	
 	@ManyToOne

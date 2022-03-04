@@ -24,7 +24,6 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name = "id_vehicule")
-	@JsonIgnore
 	private Vehicule vehicule;
 
 	@OneToMany(mappedBy = "chauffeur")
