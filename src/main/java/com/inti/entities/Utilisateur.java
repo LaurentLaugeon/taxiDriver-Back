@@ -50,7 +50,6 @@ public abstract class Utilisateur implements Serializable {
 	}
 
 	public void setIdUtilisateur(Long idUtilisateur) {
-
 		this.idUtilisateur = idUtilisateur;
 	}
 

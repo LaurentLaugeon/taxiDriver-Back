@@ -1,18 +1,19 @@
 package com.inti.entities;
 
-
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.inti.model.Adresse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @DiscriminatorValue("respo")
-public class ResponsableAgence extends Utilisateur implements Serializable{
+public class ResponsableAgence extends Utilisateur implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "id_agence")
 	private Agence agence;
@@ -36,5 +37,5 @@ public class ResponsableAgence extends Utilisateur implements Serializable{
 	public String toString() {
 		return "ResponsableAgence [agence=" + agence + "]";
 	}
-	
+
 }
