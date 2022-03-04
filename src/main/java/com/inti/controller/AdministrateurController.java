@@ -101,7 +101,7 @@ public class AdministrateurController {
 					currentClient.setPassword(client.getPassword()); 
 					currentClient.setEmail(client.getEmail());
 					currentClient.setAdresse(client.getAdresse());
-					currentClient.setPointsFidelite(client.getPointsFidelite());
+					currentClient.SetPointsFidelite(client.getPointsFidelite());
 					return administrateurService.saveClient(currentClient);
 				}
 				
