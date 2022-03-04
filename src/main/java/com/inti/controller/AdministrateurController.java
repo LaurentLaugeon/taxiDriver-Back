@@ -47,7 +47,7 @@ public class AdministrateurController {
 	
 	
 		//Afficher la liste des administrateurs
-		@GetMapping("administrateurs") 
+		@GetMapping("administrateur") 
 		public List<Administrateur> findAllAdmin(){
 			return administrateurService.findAllAdmin();
 		}
@@ -76,23 +76,23 @@ public class AdministrateurController {
 		}
 		
 		//Afficher la liste des client
-				@GetMapping("clients") 
+				@GetMapping("administrateur/clients") 
 				public List<Client> findAllClient(){
 					return administrateurService.findAllClient();
 				}
 				// Ajouter un compte client
-				@PostMapping("client/ajouterCompte") // localhost:8080/administrateur/compte 
+				@PostMapping("administrateur/client/ajouterCompte") // localhost:8080/administrateur/compte 
 				public Client saveClient(@RequestBody Client client) { // recupere les données en utilisant le body de la requete 
 					return administrateurService.saveClient(client); 
 				}
 				// Supprimer un compte client
-				@DeleteMapping("client/supprimerCompte/{idClient}")
+				@DeleteMapping("administrateur/client/supprimerCompte/{idClient}")
 				public void deleteClient(@PathVariable("idClient")Long idClient) {
 					administrateurService.deleteClient(idClient);
 				}
 				// Modifier un compte  client
 				@PutMapping
-				@RequestMapping(value="client/updateCompte/{idClient}", method=RequestMethod.PUT)
+				@RequestMapping(value="administrateur/client/updateCompte/{idClient}", method=RequestMethod.PUT)
 				public Client updateClient(@PathVariable("idClient")Long idClient, @RequestBody Client client) {
 					Client currentClient=administrateurService.findOneClient(idClient); 
 					currentClient.setNom(client.getNom()); 
@@ -106,23 +106,23 @@ public class AdministrateurController {
 				}
 				
 				//Afficher la liste des responsables d'agence
-				@GetMapping("respoAgences") 
+				@GetMapping("administrateur/respoAgences") 
 				public List<ResponsableAgence> findAllRespo(){
 					return administrateurService.findAllRespo();
 				}
 				// Ajouter un compte responsable d'agence
-				@PostMapping("respoAgence/ajouterCompte") // localhost:8080/administrateur/compte 
+				@PostMapping("administrateur/respoAgence/ajouterCompte") // localhost:8080/administrateur/compte 
 				public ResponsableAgence saveRespo(@RequestBody ResponsableAgence respo) { // recupere les données en utilisant le body de la requete 
 					return administrateurService.saveRespo(respo); 
 				}
 				// Supprimer un compte responsable d'agence
-				@DeleteMapping("respoAgence/supprimerCompte/{idRespo}")
+				@DeleteMapping("administrateur/respoAgence/supprimerCompte/{idRespo}")
 				public void deleteRespo(@PathVariable("idRespo")Long idRespo) {
 					administrateurService.deleteRespo(idRespo);
 				}
 				// Modifier un compte  responsable agence
 				@PutMapping
-				@RequestMapping(value="respoAgence/updateCompte/{idRespo}", method=RequestMethod.PUT)
+				@RequestMapping(value="administrateur/respoAgence/updateCompte/{idRespo}", method=RequestMethod.PUT)
 				public ResponsableAgence updateAdmin(@PathVariable("idRespo")Long idRespo, @RequestBody ResponsableAgence respo) {
 					ResponsableAgence currentRespo=administrateurService.findOneRespo(idRespo); 
 					currentRespo.setNom(respo.getNom()); 
@@ -136,23 +136,23 @@ public class AdministrateurController {
 				}
 				
 				//Afficher la liste des chauffeurs
-				@GetMapping("chauffeurs") 
+				@GetMapping("administrateur/chauffeurs") 
 				public List<Chauffeur> findAllChauffeur(){
 					return administrateurService.findAllChauffeur();
 				}
 				// Ajouter un compte chauffeur
-				@PostMapping("chauffeur/ajouterCompte") // localhost:8080/administrateur/compte 
+				@PostMapping("administrateur/chauffeur/ajouterCompte") // localhost:8080/administrateur/compte 
 				public Chauffeur saveChauffeur(@RequestBody Chauffeur chauffeur) { // recupere les données en utilisant le body de la requete 
 					return administrateurService.saveChauffeur(chauffeur); 
 				}
 				// Supprimer un compte chauffeur
-				@DeleteMapping("chauffeur/supprimerCompte/{idChauffeur}")
+				@DeleteMapping("administrateur/chauffeur/supprimerCompte/{idChauffeur}")
 				public void deleteChauffeur(@PathVariable("idChauffeur")Long idChauffeur) {
 					administrateurService.deleteChauffeur(idChauffeur);
 				}
 				// Modifier un compte chauffeur
 				@PutMapping
-				@RequestMapping(value="chauffeur/updateCompte/{idChauffeur}", method=RequestMethod.PUT)
+				@RequestMapping(value="administrateur/chauffeur/updateCompte/{idChauffeur}", method=RequestMethod.PUT)
 				public Chauffeur updateChauffeur(@PathVariable("idChauffeur")Long idChauffeur, @RequestBody Chauffeur chauffeur) {
 					Chauffeur currentChauffeur=administrateurService.findOneChauffeur(idChauffeur); 
 					currentChauffeur.setNom(chauffeur.getNom()); 
