@@ -39,21 +39,6 @@ public class StatistiqueService implements IStatistiqueService{
 	}
 
 	@Override
-	public List<Chauffeur> chauffeursOrderBy() {
-		return statistiqueRepository.chauffeursOrderBy();
-	}
-
-	@Override
-	public Vehicule vehiculeConsoPlus() {
-		return statistiqueRepository.vehiculeConsoPlus();
-	}
-
-	@Override
-	public Chauffeur chauffeurGagnePlus() {
-		return statistiqueRepository.chauffeurGagnePlus();
-
-	}
-	@Override
 	public List<Statistique> findByAgence(Agence agence) {
 		return statistiqueRepository.findByAgence(agence);
 	}

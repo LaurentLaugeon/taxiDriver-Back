@@ -39,4 +39,9 @@ public class VehiculeService implements IVehiculeService{
 	public List<Vehicule> findByAgence(Agence agence) {
 		return vehiculeRepository.findByAgence(agence);
 	}
+	
+	@Override
+	public Vehicule vehiculeConsoPlus() {
+		return vehiculeRepository.vehiculeConsoPlus();
+	}
 }

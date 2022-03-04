@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.inti.model.Adresse;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @DiscriminatorValue("respo")
@@ -16,7 +17,7 @@ public class ResponsableAgence extends Utilisateur implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "id_agence")
 	private Agence agence;
-
+	
 	public ResponsableAgence() {
 	}
 

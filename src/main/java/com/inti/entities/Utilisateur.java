@@ -109,4 +109,10 @@ public abstract class Utilisateur implements Serializable {
 		this.adresse = adresse;
 	}
 
+	@Override
+	public String toString() {
+		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", username=" + username + ", password=" + password
+				+ ", email=" + email + "]";
+	}
+
 }

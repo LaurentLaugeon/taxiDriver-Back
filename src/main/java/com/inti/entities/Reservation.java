@@ -32,28 +32,33 @@ public class Reservation implements Serializable {
 	private Date dateValidation;
 	private String statut;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "reservation_trajet", joinColumns = @JoinColumn(name = "id_reservation", referencedColumnName = "idResa"), inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	@JsonIgnore
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "reservation_trajet", 
+	joinColumns = @JoinColumn(name = "id_reservation", referencedColumnName = "idResa"), 
+	inverseJoinColumns = @JoinColumn(name = "id_trajet", referencedColumnName = "idTrajet"))
 	private Set<Trajet> trajets = new HashSet<>();
 
-	@OneToOne(mappedBy = "reservation")
+	@JsonIgnore
+	@OneToOne(mappedBy="reservation")
 	private Devis devis;
 
-	@OneToOne(mappedBy = "reservation")
+	@JsonIgnore
+	@OneToOne(mappedBy="reservation")
 	private Facture facture;
 
-	@OneToOne(mappedBy = "reservation")
-
+	@JsonIgnore
+	@OneToOne(mappedBy="reservation")
 	private AvisClient avisClient;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "reservation")
 	Set<Reclamation> reclamations = new HashSet<>();
 
 	@ManyToOne
 	@JoinColumn(name = "id_client")
 	private Client client;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "id_chauffeur")
 	private Chauffeur chauffeur;

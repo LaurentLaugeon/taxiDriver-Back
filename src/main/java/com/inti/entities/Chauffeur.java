@@ -25,7 +25,6 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name = "id_vehicule")
-	@JsonIgnore
 	private Vehicule vehicule;
 
 	@OneToMany(mappedBy = "chauffeur")
@@ -34,7 +33,6 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_agence")
-	@JsonIgnore
 	private Agence agence;
 
 	public Chauffeur() {
@@ -105,7 +103,7 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Chauffeur [note=" + note + ", plannings=" + plannings + ", vehicule=" + vehicule + ", reservations="
+		return super.toString()+ "Chauffeur [note=" + note + ", plannings=" + plannings + ", vehicule=" + vehicule + ", reservations="
 				+ reservations + ", agence=" + agence + "]";
 	}
 
